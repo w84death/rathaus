@@ -1,6 +1,6 @@
 var player = {
-    x : 4,
-    y : 4,
+    x : 2,
+    y : 2,
     dir : 0,
     rot : 0,
     speed : 0,
@@ -15,7 +15,7 @@ var player = {
         var newY = this.y + Math.sin(this.rot) * moveStep;
 
         if (this.isBlocking(newX, newY)) return;
-        
+
         miniMap.update();
 
         this.x = newX;
