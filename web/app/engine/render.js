@@ -177,6 +177,7 @@ var render = {
 
 			strip.style.height = height+"px";
 			strip.style.top = top+"px";
+			strip.style.zIndex = 100 - (dist<<0);
 
 			strip.img.style.height = Math.floor(height * this.numTextures) + "px";
 			strip.img.style.width = Math.floor(width*2) +"px";

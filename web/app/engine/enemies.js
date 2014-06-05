@@ -117,7 +117,7 @@ var enemies = {
 //                    oldStyles.zIndex = styleZIndex;
 //                }
 
-                style.zIndex = 100 -  dist<<0;
+                style.zIndex = 100 - (dist<<0);
                 var styleDisplay = 'block';
                 if (styleDisplay != oldStyles.display) {
                     style.display = styleDisplay;
