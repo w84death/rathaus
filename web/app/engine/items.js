@@ -80,6 +80,7 @@ var items = {
     },
 
     renderSprites : function () {
+        var viewDist = (render.screenWidth/2) / Math.tan((render.fov / 2));
         for (var i = 0; i < this.visibleSprites.length; i++) {
             var sprite = this.visibleSprites[i];
             var img = sprite.img;
@@ -96,10 +97,10 @@ var items = {
             var spriteAngle = Math.atan2(dy, dx) - player.rot;
 
             // Size of the sprite
-            var size = render.viewDist / (Math.cos(spriteAngle) * dist * 2);
+            var size = viewDist / (Math.cos(spriteAngle) * dist * 2);
 
             // X-position on screen
-            var x = Math.tan(spriteAngle) * render.viewDist;
+            var x = Math.tan(spriteAngle) * viewDist;
             var left = (render.screenWidth/2 + x - size/2) + 'px';
             img.css('left', left);
 
