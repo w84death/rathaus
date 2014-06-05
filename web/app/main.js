@@ -14,53 +14,17 @@
 var game = {
 
     STATE: 'game',
-    miniMap: {
-        scale: 8,
-        save: null
-    },
 
     init: function(){
         // init map
         maps.init();
+        miniMap.init();
+
         this.bindKeys();
-
-        // draw minimap
-        this.drawMiniMap();
-
-        // main cycle
-        this.gameCycle();
-    },
-
-    drawMiniMap: function() {
-
-        var mapDiv = $("<div class='map'></div>");
-        var mapCanvas = $('<canvas width="' + maps.active.width * this.miniMap.scale +
-            '" height="' + maps.active.height * this.miniMap.scale + '"></canvas>');
-        var ctx = mapCanvas[0].getContext('2d');
-
-        for (var y=0; y < maps.active.height; y++) {
-            for (var x=0; x < maps.active.width; x++) {
-                var wall = maps.levels[maps.active.level][y][x];
-
-                if (wall > 0) {
-                    colorValue = wall * 15;
-                    ctx.fillStyle = 'rgb(' + colorValue + ',' + colorValue + ',' + colorValue + ')';
-
-                    ctx.fillRect(
-                        x * this.miniMap.scale,
-                        y * this.miniMap.scale,
-                        this.miniMap.scale, this.miniMap.scale
-                    );
-                }
-            }
-        }
-
-        mapDiv.append(mapCanvas);
-        $('.viewport').append(mapDiv);
-    },
-
-    upadateMiniMap: function(){
+        console.log(':: game initialized');
         
+        console.log(':: starting game cycle..');
+        this.gameCycle();
     },
 
     bindKeys: function() {

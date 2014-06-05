@@ -15,7 +15,9 @@ var player = {
         var newY = this.y + Math.sin(this.rot) * moveStep;
 
         if (this.isBlocking(newX, newY)) return;
-        game.upadateMiniMap();
+        
+        miniMap.update();
+
         this.x = newX;
         this.y = newY;
     },

@@ -10,6 +10,7 @@ var maps = {
     init: function(){
         this.initMaps();
         this.loadMap(0);
+        console.log(':: maps initialized');
     },
 
     loadMap: function(level){
