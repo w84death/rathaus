@@ -20,6 +20,7 @@ var game = {
         // init map
         maps.init();
         miniMap.init();
+        hud.init();
         render.init();
         enemies.initEnemies();
 
@@ -56,6 +57,7 @@ var game = {
             switch (e.keyCode) {
                 case 78:
                     maps.nextMap();
+                    hud.reset();
                 case 38:
                 case 40:
                     player.speed = 0; break;
