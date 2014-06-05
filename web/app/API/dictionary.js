@@ -11,7 +11,6 @@ var dictionary = {
 
         $.getJSON(url, function (data) {
             callback(data.results);
-            console.log(keyword, data);
         });
     }
 
