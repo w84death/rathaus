@@ -2,19 +2,19 @@ var enemies = {
     enemyTypes: [
         {
             img : 'media/images/enemies/mummy_color.png',
-            moveSpeed : 0.02,
+            moveSpeed : 0.2,
             rotSpeed : 1,
             totalStates : 5
         },
         {
             img : 'media/images/enemies/mummy.png',
-            moveSpeed : 0.01,
+            moveSpeed : 0.1,
             rotSpeed : 0.5,
             totalStates : 5
         },
         {
             img : 'media/images/enemies/metal_skeleton.png',
-            moveSpeed : 0.1,
+            moveSpeed : 1,
             rotSpeed : 2,
             totalStates : 5
         }
@@ -61,13 +61,15 @@ var enemies = {
     },
 
     renderEnemies: function() {
-        for (var i=0;i<enemies.length;i++) {
-            var enemy = enemies[i];
+        for (var i=0;i<this.enemies.length;i++) {
+            //console.log(i);
+            var enemy = this.enemies[i];
             var img = enemy.img;
             var dx = enemy.x - player.x;
             var dy = enemy.y - player.y;
             // Angle relative to player direction
             var angle = Math.atan2(dy, dx) - player.rot;
+
             // Make angle from +/- PI
             if (angle < -Math.PI) angle += 2*Math.PI;
             if (angle >= Math.PI) angle -= 2*Math.PI;
@@ -75,8 +77,8 @@ var enemies = {
             if (angle > -Math.PI*0.5 && angle < Math.PI*0.5) {
                 var distSquared = dx*dx + dy*dy;
                 var dist = Math.sqrt(distSquared);
-                var size = viewDist / (Math.cos(angle) * dist);
-                var x = Math.tan(angle) * viewDist;
+                var size = render.viewDist / (Math.cos(angle) * dist);
+                var x = Math.tan(angle) * render.viewDist;
                 var style = img.style;
                 var oldStyles = enemy.oldStyles;
 
@@ -95,7 +97,7 @@ var enemies = {
 
                 // Top position is halfway down the screen,
                 // minus half the sprite height
-                var styleTop = ((screenHeight-size)/2);
+                var styleTop = ((render.screenHeight-size)/2);
                 if (styleTop != oldStyles.top) {
                     style.top = styleTop + 'px';
                     oldStyles.top = styleTop;
@@ -103,18 +105,19 @@ var enemies = {
 
                 // Place at x position, adjusted for sprite
                 // size and the current sprite state
-                var styleLeft = (screenWidth/2 + x - size/2 - size*enemy.state);
+                var styleLeft = (render.screenWidth/2 + x - size/2 - size*enemy.state);
                 if (styleLeft != oldStyles.left) {
                     style.left = styleLeft + 'px';
                     oldStyles.left = styleLeft;
                 }
 
-                var styleZIndex = -(distSquared*1000)>>0;
-                if (styleZIndex != oldStyles.zIndex) {
-                    style.zIndex = styleZIndex;
-                    oldStyles.zIndex = styleZIndex;
-                }
+//                var styleZIndex = -(distSquared*1000)>>0;
+//                if (styleZIndex != oldStyles.zIndex) {
+//                    style.zIndex = styleZIndex;
+//                    oldStyles.zIndex = styleZIndex;
+//                }
 
+                style.zIndex = 100 -  dist<<0;
                 var styleDisplay = 'block';
                 if (styleDisplay != oldStyles.display) {
                     style.display = styleDisplay;
@@ -139,15 +142,15 @@ var enemies = {
         }
     },
 
-    ai: function(timeDelta) {
-        for (var i=0; i < enemies.length; i++) {
-            var enemy = enemies[i];
+    ai: function() {
+        for (var i=0; i < this.enemies.length; i++) {
+            var enemy = this.enemies[i];
             var dx = player.x - enemy.x;
             var dy = player.y - enemy.y;
             // Distance from enemy to to player
             var dist = Math.sqrt(dx*dx + dy*dy);
             // If distance is more than X, then enemy must chase player
-            if (dist > 4) {
+            if (dist > 2) {
                 var angle = Math.atan2(dy, dx);
                 enemy.rotDeg = angle * 180 / Math.PI;
                 enemy.rot = angle;
@@ -160,8 +163,28 @@ var enemies = {
                 enemy.state = 0;
                 enemy.speed = 0;
             }
-            move(enemies[i], timeDelta);
+            this.move(this.enemies[i], i);
         }
+    },
+    isBlocking: function(x,y){
+        if (y < 0 || y >= maps.active.height || x < 0 || x >= maps.active.width) {
+            return true;
+        }
+        return (maps.levels[maps.active.level].walls[Math.floor(y)][Math.floor(x)] != 0);
+    },
+    move: function(enemy, i) {
+        var moveStep = enemy.speed * enemy.moveSpeed;
+        this.rot += enemy.rot * enemy.rotSpeed;
+
+        var newX = enemy.x + Math.cos(enemy.rot) * moveStep;
+        var newY = enemy.y + Math.sin(enemy.rot) * moveStep;
+
+        if (this.isBlocking(newX, newY)) return;
+
+        //miniMap.update();
+
+        enemy.x = newX;
+        enemy.y = newY;
     },
     debug: function(){
         console.log(enemies);

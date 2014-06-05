@@ -195,5 +195,6 @@ var render = {
 
 	render: function(){
 		this.castRays();
+        enemies.renderEnemies()
 	}
 }

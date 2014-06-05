@@ -10,15 +10,16 @@ var maps = {
 
     init: function(){
         this.initMaps();
-        this.loadMap(0);
+        this.loadMap();
         this.loadItems();
         console.log(':: maps initialized');
     },
 
-    loadMap: function(level){
-        this.active.level = level;
-        this.active.width = this.levels[level].walls[0].length;
-        this.active.height = this.levels[level].walls.length;
+    loadMap: function(){
+        this.active.width = this.levels[maps.active.level].walls[0].length;
+        this.active.height = this.levels[maps.active.level].walls.length;
+        player.x = maps.levels[maps.active.level].start[0].x;
+        player.y = maps.levels[maps.active.level].start[0].y;
         enemies.reloadMap();
     },
 
@@ -27,6 +28,8 @@ var maps = {
         if(this.active.level > this.levels.length-1){
             this.active.level = 0;
         }
+        this.loadMap();
+
     },
 
     loadItems: function () {
@@ -98,8 +101,9 @@ this.levels.push({
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ],
-    enemies: [{x:7.5,y:8.5,type:0},{x:25.5,y:3.5,type:1},{x:16.5,y:32.5,type:2}],
-    items: [{x:5.5,y:8.5},{x:11.5,y:26.5},{x:11.5,y:11.5},{x:27.5,y:29.5},{x:27.5,y:3.5},{x:23.5,y:3.5}]
+    enemies: [{x:8,y:8,type:0},{x:26,y:3,type:1},{x:17,y:31,type:2}],
+    items: [{x:6,y:6},{x:11,y:26},{x:11,y:11},{x:27,y:28},{x:27,y:3},{x:24,y:3}],
+    start:[{x:15,y:17}]
 });
 this.levels.push({
     walls: [
@@ -138,8 +142,9 @@ this.levels.push({
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ],
-    enemies: [{x:16.5,y:19.5,type:3}],
-    items: [{x:6.5,y:2.5},{x:6.5,y:6.5},{x:2.5,y:14.5},{x:21.5,y:6.5},{x:29.5,y:2.5}]
+    enemies: [{x:16,y:19,type:3}],
+    items: [{x:6,y:2},{x:6,y:6},{x:2,y:14},{x:21,y:6},{x:29,y:2}],
+    start:[{x:17,y:26}]
 });
 this.levels.push({
     walls: [
@@ -178,8 +183,9 @@ this.levels.push({
     [1, 0, 0, 0, 0, 0, 9, 9, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ],
-    enemies: [{x:29.5,y:10.5,type:0},{x:22.5,y:14.5,type:1},{x:27.5,y:32.5,type:2}],
-    items: [{x:1.5,y:1.5},{x:1.5,y:32.5},{x:31.5,y:1.5},{x:31.5,y:32.5},{x:30.5,y:11.5},{x:30.5,y:16.5}]
+    enemies: [{x:29,y:10,type:0},{x:22,y:14,type:1},{x:27,y:32,type:2}],
+    items: [{x:1,y:1},{x:1,y:30},{x:30,y:1},{x:30,y:32},{x:30,y:11},{x:30,y:16}],
+    start:[{x:17,y:22}]
 });
 
 this.levels.push({
@@ -219,8 +225,9 @@ this.levels.push({
     [1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ],
-    enemies: [{x:8.5,y:15.5,type:0},{x:30.5,y:18.5,type:1},{x:30.5,y:31.5,type:2}],
-    items: [{x:2.5,y:1.5},{x:15.5,y:21.5},{x:2.5,y:18.5}]
+    enemies: [{x:9,y:16,type:0},{x:30,y:18,type:1},{x:30,y:31,type:2}],
+    items: [{x:2,y:1},{x:15,y:21},{x:2,y:18}],
+    start:[{x:20,y:2}]
 });
 
 this.levels.push({
@@ -260,8 +267,9 @@ this.levels.push({
     [1, 0, 0, 0, 0, 0, 0, 0,10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,10, 0, 0, 0, 0, 0, 0,11, 1],
     [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ],
-    enemies: [{x:8.5,y:14.5,type:0},{x:30.5,y:18.5,type:1},{x:30.5,y:30.5,type:2}],
-    items: [{x:6.5,y:1.5},{x:3.5,y:8.5},{x:20.5,y:22.5}]
+    enemies: [{x:8,y:14,type:0},{x:30,y:18,type:1},{x:30,y:30,type:2}],
+    items: [{x:6,y:1},{x:3,y:8},{x:21,y:20}],
+    start:[{x:3,y:2}]
 });
     }
 }
