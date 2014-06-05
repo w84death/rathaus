@@ -1,33 +1,33 @@
 var player = {
-	x : 4,
-	y : 4,
-	dir : 0,
-	rot : 0,
-	speed : 0,
-	moveSpeed : 0.18,
-	rotSpeed : 6 * Math.PI / 180,
+    x : 4,
+    y : 4,
+    dir : 0,
+    rot : 0,
+    speed : 0,
+    moveSpeed : 0.18,
+    rotSpeed : 6 * Math.PI / 180,
 
-	move: function() {
-		var moveStep = this.speed * this.moveSpeed;
-		this.rot += this.dir * this.rotSpeed;
+    move: function() {
+        var moveStep = this.speed * this.moveSpeed;
+        this.rot += this.dir * this.rotSpeed;
 
-		var newX = this.x + Math.cos(this.rot) * moveStep;
-		var newY = this.y + Math.sin(this.rot) * moveStep;
+        var newX = this.x + Math.cos(this.rot) * moveStep;
+        var newY = this.y + Math.sin(this.rot) * moveStep;
 
-		if (this.isBlocking(newX, newY)) return;
+        if (this.isBlocking(newX, newY)) return;
+        game.upadateMiniMap();
+        this.x = newX;
+        this.y = newY;
+    },
 
-		this.x = newX;
-		this.y = newY;
-	},
+    isBlocking: function(x,y){
+        if (y < 0 || y >= maps.active.height || x < 0 || x >= maps.active.width) {
+            return true;
+        }
+        return (maps.levels[maps.active.level][Math.floor(y)][Math.floor(x)] != 0);
+    },
 
-	isBlocking: function(x,y){
-		if (y < 0 || y >= maps.active.height || x < 0 || x >= maps.active.width) {
-			return true;
-		}
-		return (maps.levels[maps.active.level][Math.floor(y)][Math.floor(x)] != 0);
-	},
-
-	debug: function(){
-		console.log(this.x, this.y);
-	},
+    debug: function(){
+        console.log(this.x, this.y);
+    },
 }
