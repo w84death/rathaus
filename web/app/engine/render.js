@@ -5,14 +5,18 @@ var render = {
 	screenHeight: 200,
 	stripWidth: 2,
 	fov: 60 * Math.PI / 180,
-	numRays: 320 / 10,
-	fovHalf: 60 * 0.5,
-	viewDist: (320/2) / Math.tan(((60) / 2))*(-1),
+	numRays: null,
+	fovHalf: null,
+	viewDist: null,
 	twoPI: Math.PI * 2,
 	numTextures: 4,
 	stripIdx: 0,
 		
 	init: function(){
+		this.numRays = Math.ceil(this.screenWidth / this.stripWidth);
+		this.fovHalf = this.fov * 0.5;
+		this.viewDist = (this.screenWidth/2) / Math.tan((this.fov / 2));
+
 		var screen = document.getElementById('screen');
 
 		for (var i=0; i < this.screenWidth; i+=this.stripWidth) {
@@ -150,7 +154,8 @@ var render = {
 		if (dist) {
 			//drawRay(xHit, yHit);
 
-			var strip = this.screenStrips[this.stripIdx];
+			var strip = this.screenStrips[this.stripIdx-1];
+			console.log(this.stripIdx)
 
 			dist = Math.sqrt(dist);
 
@@ -167,7 +172,7 @@ var render = {
 
 			// width is the same, but we have to stretch the texture to a factor of stripWidth to make it fill the strip correctly
 			var width = height * this.stripWidth;
-console.log(width,height, dist, this.viewDist)
+			console.log(width,height, dist, this.viewDist)
 			// top placement is easy since everything is centered on the x-axis, so we simply move
 			// it half way down the screen and then half the wall height back up.
 			var top = Math.round((this.screenHeight - height) / 2);
