@@ -78,13 +78,23 @@ div#ceiling {height:50%; background-color:rgb(210,224,224);}
 footer {text-align:center;}
 
 .item {
-    border: 2px solid yellow;
+    border:     2px solid yellow;
 }
 #description{
     position:   absolute;
     z-index:    100000000000;
     top:        600px;
-
+}
+#blood{
+    position:   fixed;
+    width:      1024px;
+    height:     600px;
+    top:        50%;
+    left:       50%;
+    margin-top: -300px;
+    margin-left:-512px;
+    opacity:    0;
+    background-image: url(web/media/blood.jpg);
 }
 
 
