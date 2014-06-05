@@ -153,7 +153,7 @@ var enemies = {
         }
     },
     isBlocking: function(x,y){
-        if (y < 0 || y >= maps.active.height || x < 0 || x >= maps.active.width) {
+        if (y <= 0 || y >= maps.active.height || x <= 0 || x >= maps.active.width) {
             return true;
         }
         return (maps.levels[maps.active.level].walls[Math.floor(y)][Math.floor(x)] != 0);
@@ -174,8 +174,10 @@ var enemies = {
             probability.increase(enemy);
         }
 
-        enemy.x = newX;
-        enemy.y = newY;
+        var pos = collision.checkCollision(newX, newY, 0.35);
+
+        enemy.x = pos.x;
+        enemy.y = pos.y;
     },
     debug: function(){
         console.log(enemies);

@@ -36,6 +36,9 @@ var npcAi = {
         // init behaviur pattern
         if (!entity.behaviourPattern) {
             this.initBehaviuor(entity);
+
+            entity.lastAction = 1;
+            entity.reverseAction = 0;
         }
 
         // try to follow if can
@@ -56,7 +59,7 @@ var npcAi = {
                 range[i] = range[i-1] + entity.behaviourPattern[i].value;
             }
         }
-        //console.log(range);
+
         var random = Math.floor((Math.random() * randomValue));
 
         if (random <= range[0]) {
@@ -79,7 +82,6 @@ var npcAi = {
     },
     initBehaviuor: function(entity) {
         entity.behaviourPattern = this.behaviourPattern;
-        entity.lastAction = 1;
-        entity.reverseAction = 0;
+
     }
 }
