@@ -16,6 +16,7 @@ var game = {
     STATE: 'game',
     miniMap: {
         scale: 8,
+        save: null
     },
 
     init: function(){
@@ -56,6 +57,10 @@ var game = {
 
         mapDiv.append(mapCanvas);
         $('.viewport').append(mapDiv);
+    },
+
+    upadateMiniMap: function(){
+        
     },
 
     bindKeys: function() {
