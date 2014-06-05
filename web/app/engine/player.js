@@ -9,6 +9,7 @@ var player = {
     item : null,
     pickupThreshold : 0.6,
     doorThreshold : 1.5,
+    bloodThreshold : 2.5,
 
     move: function() {
         var moveStep = this.speed * this.moveSpeed;
@@ -22,6 +23,7 @@ var player = {
 
         this.x = pos.x;
         this.y = pos.y;
+        this.bloodOnScreen(this.x,this.y);
         this.nearDoor(this.x,this.y);
 
 
@@ -160,6 +162,14 @@ var player = {
             if (this.item.id == maps.active.key.item.id){
                 maps.nextMap();
             }
+        }
+     },
+     bloodOnScreen: function(x,y){
+        var dx = maps.levels[maps.active.level].door.x - x;
+        var dy = maps.levels[maps.active.level].door.y - y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+        if (dist < this.bloodThreshold) {
+            $('blood').style.opacity = 1 - dist/2.5;
         }
      }
 
