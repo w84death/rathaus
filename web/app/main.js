@@ -16,7 +16,6 @@ var game = {
 	STATE: 'game',
 	miniMap: {
 		scale: 8,
-		id: 'mimimap'
 	},
 
 	init: function(){
