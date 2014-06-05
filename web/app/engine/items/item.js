@@ -20,7 +20,7 @@ Item.prototype.fetchDescription = function () {
     dictionary.query(this.name, function (descriptions) {
         for (var i = descriptions.length - 1; i >= 0; i--) {
             if (descriptions[i].id == that.descriptionId) {
-                that.description = descriptions[i].senses[0].description;
+                that.description = descriptions[i].senses[0].definition;
                 break;
             }
         };
