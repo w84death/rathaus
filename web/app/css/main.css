@@ -80,6 +80,12 @@ footer {text-align:center;}
 .item {
     border: 2px solid yellow;
 }
+#description{
+    position:   absolute;
+    z-index:    100000000000;
+    top:        600px;
+
+}
 
 
 
