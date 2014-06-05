@@ -28,8 +28,4 @@ var player = {
         }
         return (maps.levels[maps.active.level].walls[Math.floor(y)][Math.floor(x)] != 0);
     },
-
-    debug: function(){
-        console.log(this.x, this.y);
-    },
 }

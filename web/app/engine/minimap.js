@@ -1,6 +1,6 @@
 var miniMap = {
 
-    scale: 2,
+    scale: 6,
     div: null,
     ctx: null,
     canvas: null,

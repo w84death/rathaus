@@ -71,10 +71,7 @@ var game = {
         var dt = now - this.lastUpdate;
         enemies.ai(dt);
         enemies.renderEnemies();
-        //enemies.debug();
 
-        // DEBUG STUFF
-        //player.debug();
         setTimeout(game.gameCycle,1000/30); // Aim for 30 FPS
     }
 
