@@ -10,7 +10,8 @@ var dictionary = {
             + keyword + '&apikey=' + this.options.apiKey;
 
         $.getJSON(url, function (data) {
-            callback(data.results[0].senses[0].definition);
+            callback(data.results);
+            console.log(keyword, data);
         });
     }
 

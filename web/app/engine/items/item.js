@@ -2,6 +2,7 @@
 function Item () {
     this.name = null;
     this.id = null;
+    this.descriptionId = null;
     this.description = null;
 }
 
@@ -16,8 +17,13 @@ Item.prototype.getDescription = function () {
 Item.prototype.fetchDescription = function () {
     var that = this;
 
-    dictionary.query(this.name, function (description) {
-        that.description = description;
+    dictionary.query(this.name, function (descriptions) {
+        for (var i = descriptions.length - 1; i >= 0; i--) {
+            if (descriptions[i].id == that.descriptionId) {
+                that.description = descriptions[i].senses[0].description;
+                break;
+            }
+        };
     });
 }
 
