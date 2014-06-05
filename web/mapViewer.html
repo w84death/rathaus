@@ -3,10 +3,12 @@
     <body>
         <div id="minimap"></div>
         <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="app/Maps.js"></script>
         <script type="text/javascript">
-        $().ready(function () {
+
+        function renderMaps () {
             var miniMap = $('#minimap');
+            miniMap.empty();
+
             var map;
             var mapCanvas;
             var mapWidth = 0;
@@ -44,30 +46,16 @@
                 map.append(mapCanvas);
                 miniMap.append(map);
             };
+        }
 
-            // var mapWidth = 0;       // Number of map blocks in x-direction
-            // var mapHeight = 0;      // Number of map blocks in y-direction
-            // var miniMapScale = 8;   // How many pixels to draw a map block
+        var loadMaps = function () {
+            $.getScript('app/Maps.js', function () {
+                renderMaps()
+            });
+        }
 
-            // function init() {
-            //     mapWidth = map[0].length;
-            //     mapHeight = map.length;
-
-            //     drawMiniMap();
-            // }
-
-            // function drawMiniMap() {
-            //     // Draw the topdown view minimap
-            //     var miniMap = $('minimap');
-            //     // Resize the internal canvas dimensions
-            //     miniMap.width = mapWidth * miniMapScale;
-            //     miniMap.height = mapHeight * miniMapScale;
-            //     // Resize the canvas CSS dimensions
-            //     miniMap.style.width = (mapWidth * miniMapScale) + 'px';
-            //     miniMap.style.height = (mapHeight * miniMapScale) + 'px';
-
-            //     // Loop through all blocks on the map
-            // }
+        $().ready(function () {
+            setInterval(loadMaps, 1000);
         });
         </script>
     </body>
