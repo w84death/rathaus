@@ -32,7 +32,7 @@ body {background-color:#444; color:#f8f8f8;}
 .viewport {position: fixed; width:800px; height:600px; background-color:#222;
   top: 50%; left: 50%; margin-top: -300px; margin-left: -400px;}
 
-.minimap {position:absolute; bottom:0; right:0; opacity:0.8;}
+.minimap {position:absolute; bottom:0; left:0; opacity:0.8;}
 
 #screen {position:fixed; width:800px; height:600px; overflow:hidden;}
 

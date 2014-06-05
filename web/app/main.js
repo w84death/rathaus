@@ -54,6 +54,8 @@ var game = {
         document.onkeyup = function(e) {
             e = e || window.event;
             switch (e.keyCode) {
+                case 78:
+                    maps.nextMap();
                 case 38:
                 case 40:
                     player.speed = 0; break;
