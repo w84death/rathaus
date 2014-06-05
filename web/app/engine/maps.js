@@ -22,6 +22,13 @@ var maps = {
         enemies.reloadMap();
     },
 
+    nextMap: function(){
+        this.active.level += 1;
+        if(this.active.level > this.levels.length-1){
+            this.active.level = 0;
+        }
+    },
+
     loadItems: function () {
         this.active.items = [];
         var level = this.active.level;

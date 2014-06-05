@@ -1,7 +1,7 @@
 var render = {
 
 	screenStrips: [],
-	screenWidth: 800,
+	screenWidth: 1024,
 	screenHeight: 600,
 	stripWidth: 2,
 	fov: 110 * Math.PI / 180,
