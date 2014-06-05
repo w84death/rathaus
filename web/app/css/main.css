@@ -10,7 +10,7 @@ hr { display: block; height: 1px; border: 0; border-top: 1px solid #222; margin:
 
 /* layout_ */
 
-body {width:864px; margin:0 50px;}
+body {width:100%; margin:0;}
 
 ul,li {margin:0; padding:0; list-style:none;}
 a:link, a:visited, a:active {text-decoration:underline;}
@@ -28,6 +28,16 @@ p {font-size:1em;}
 /* theme_ */
 
 body {background-color:#444; color:#f8f8f8;}
+
+.viewport {position:relative; width:800px; height:400px; margin:0 auto;}
+.minimap {position:absolute; top:0; right:0;}
+
+#screen {position:relative; width:320px; height:200px; overflow:hidden;
+    border:1px solid black;}
+    
+div#floor,
+div#ceiling {position:absolute; width:100%; height:100%; background-color:rgb(99,118,118);}
+div#ceiling {height:50%; background-color:rgb(210,224,224);}
 
 
 

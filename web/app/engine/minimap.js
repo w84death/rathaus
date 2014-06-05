@@ -7,7 +7,7 @@ var miniMap = {
 
 	init: function() {
 
-        this.div = $("<div class='map'></div>");
+        this.div = $("<div class='minimap'></div>");
         this.canvas = $('<canvas width="' + maps.active.width * this.scale +
             '" height="' + maps.active.height * this.scale + '"></canvas>');
         this.ctx = this.canvas[0].getContext('2d');
