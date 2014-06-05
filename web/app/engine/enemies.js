@@ -36,6 +36,7 @@ var enemies = {
 
             enemy.state = 0;
             enemy.rot = 0;
+            enemy.rotDeg = 0;
             enemy.dir = 0;
             enemy.speed = 0;
             enemy.moveSpeed = type.moveSpeed;
@@ -57,57 +58,62 @@ var enemies = {
     },
 
     reloadMap: function() {
+        /*for(var i=0; i<this.mapEnemies.length; i++){
+            this.mapEnemies[i].parentNode.removeChild(this.mapEnemies[i]);
+        }*/
         this.mapEnemies = maps.levels[maps.active.level].enemies;
     },
 
     renderEnemies: function() {
         for (var i=0;i<this.enemies.length;i++) {
-            //console.log(i);
             var enemy = this.enemies[i];
             var img = enemy.img;
+
             var dx = enemy.x - player.x;
             var dy = enemy.y - player.y;
-            // Angle relative to player direction
+
             var angle = Math.atan2(dy, dx) - player.rot;
 
-            // Make angle from +/- PI
             if (angle < -Math.PI) angle += 2*Math.PI;
             if (angle >= Math.PI) angle -= 2*Math.PI;
-            // Is enemy in front of player?
+
+            // is enemy in front of player? Maybe use the FOV value instead.
             if (angle > -Math.PI*0.5 && angle < Math.PI*0.5) {
                 var distSquared = dx*dx + dy*dy;
                 var dist = Math.sqrt(distSquared);
                 var size = render.viewDist / (Math.cos(angle) * dist);
+
+                if (size <= 0) continue;
+
                 var x = Math.tan(angle) * render.viewDist;
+
                 var style = img.style;
                 var oldStyles = enemy.oldStyles;
 
-                // Height is equal to the sprite size
+                // height is equal to the sprite size
                 if (size != oldStyles.height) {
-                    style.height = size + 'px';
+                    style.height =  size + "px";
                     oldStyles.height = size;
                 }
-                // Width is equal to the sprite size
-                // times the total number of states
+
+                // width is equal to the sprite size times the total number of states
                 var styleWidth = size * enemy.totalStates;
                 if (styleWidth != oldStyles.width) {
-                    style.width = styleWidth + 'px';
+                    style.width = styleWidth + "px";
                     oldStyles.width = styleWidth;
                 }
 
-                // Top position is halfway down the screen,
-                // minus half the sprite height
+                // top position is halfway down the screen, minus half the sprite height
                 var styleTop = ((render.screenHeight-size)/2);
                 if (styleTop != oldStyles.top) {
-                    style.top = styleTop + 'px';
+                    style.top = styleTop + "px";
                     oldStyles.top = styleTop;
                 }
 
-                // Place at x position, adjusted for sprite
-                // size and the current sprite state
+                // place at x position, adjusted for sprite size and the current sprite state
                 var styleLeft = (render.screenWidth/2 + x - size/2 - size*enemy.state);
                 if (styleLeft != oldStyles.left) {
-                    style.left = styleLeft + 'px';
+                    style.left = styleLeft + "px";
                     oldStyles.left = styleLeft;
                 }
 
@@ -117,23 +123,21 @@ var enemies = {
                     oldStyles.zIndex = styleZIndex;
                 }
 
-                //style.zIndex = 100 - (dist<<0);
-                var styleDisplay = 'block';
+                var styleDisplay = "block";
                 if (styleDisplay != oldStyles.display) {
                     style.display = styleDisplay;
                     oldStyles.display = styleDisplay;
                 }
 
-                var styleClip = 'rect(0, ' +
-                    (size*(enemy.state+1)) + ', ' +
-                    size + ', ' +
-                    (size*(enemy.state)) + ')';
+                eSize = (size*0.05)<<0;
+                var styleClip = "rect(0, " + (eSize*(enemy.state+1)) + ", " + eSize + ", " + (eSize*(enemy.state)) + ")";
                 if (styleClip != oldStyles.clip) {
                     style.clip = styleClip;
                     oldStyles.clip = styleClip;
                 }
+
             } else {
-                var styleDisplay = 'none';
+                var styleDisplay = "none";
                 if (styleDisplay != enemy.oldStyles.display) {
                     img.style.display = styleDisplay;
                     enemy.oldStyles.display = styleDisplay;

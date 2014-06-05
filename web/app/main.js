@@ -73,13 +73,10 @@ var game = {
 
         var now = Date.now();
         var dt = now - this.lastUpdate;
-        enemies.ai(dt);
-        ;
+        enemies.ai(dt);      
 
-        setTimeout(game.gameCycle,1000/30); // Aim for 30 FPS
+        setTimeout(game.gameCycle,1000/30);
     }
-
-
 }
 
 game.init();
