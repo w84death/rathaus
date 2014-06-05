@@ -5,9 +5,9 @@ var render = {
 	screenHeight: 200,
 	stripWidth: 2,
 	fov: 60 * Math.PI / 180,
-	numRays: Math.ceil(this.screenWidth / this.stripWidth),
-	fovHalf: this.fov / 2,
-	viewDist: (this.screenWidth/2) / Math.tan((this.fov / 2)),
+	numRays: Math.ceil(320 / 200),
+	fovHalf: 60 / 2,
+	viewDist: (320/2) / Math.tan((60 / 2)),
 	twoPI: Math.PI * 2,
 	numTextures: 4,
 	stripIdx: 0,
@@ -93,12 +93,11 @@ var render = {
 
 			// is this point inside a wall block?
 			if (maps.levels[maps.active.level].walls[wallY][wallX] > 0) {
-				console.log(x,y)
 				var distX = x - player.x;
 				var distY = y - player.y;
 				dist = distX*distX + distY*distY;	// the distance from the player to this point, squared.
 
-				wallType = maps.levels.walls[wallY][wallX]; // we'll remember the type of wall we hit for later
+				wallType = maps.levels[maps.active.level].walls[wallY][wallX]; // we'll remember the type of wall we hit for later
 				textureX = y % 1;	// where exactly are we on the wall? textureX is the x coordinate on the texture that we'll use later when texturing the wall.
 				if (!right) textureX = 1 - textureX; // if we're looking to the left side of the map, the texture should be reversed
 
@@ -129,7 +128,7 @@ var render = {
 		while (x >= 0 && x < maps.active.width && y >= 0 && y < maps.active.height) {
 			var wallY = Math.floor(y + (up ? -1 : 0));
 			var wallX = Math.floor(x);
-			if (maps.levels.walls[wallY][wallX] > 0) {
+			if (maps.levels[maps.active.level].walls[wallY][wallX] > 0) {
 				var distX = x - player.x;
 				var distY = y - player.y;
 				var blockDist = distX*distX + distY*distY;
@@ -138,7 +137,7 @@ var render = {
 					xHit = x;
 					yHit = y;
 
-					wallType = maps.levels.walls[wallY][wallX];
+					wallType = maps.levels[maps.active.level].walls[wallY][wallX];
 					textureX = x % 1;
 					if (up) textureX = 1 - textureX;
 				}
@@ -148,6 +147,7 @@ var render = {
 			y += dYHor;
 		}
 
+		console.log(dist)
 		if (dist) {
 			//drawRay(xHit, yHit);
 
