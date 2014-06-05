@@ -22,7 +22,6 @@ var game = {
         miniMap.init();
         hud.init();
         render.init();
-        enemies.initEnemies();
 
         this.bindKeys();
         console.log(':: game initialized');
@@ -73,7 +72,7 @@ var game = {
 
         var now = Date.now();
         var dt = now - this.lastUpdate;
-        enemies.ai(dt);      
+        enemies.ai(dt);
 
         setTimeout(game.gameCycle,1000/30);
     }

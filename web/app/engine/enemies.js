@@ -30,7 +30,7 @@ var enemies = {
             var enemy = this.mapEnemies[i];
             var type = this.enemyTypes[enemy.type];
             var enemyCanvas = $('<div width="' + 1 +
-            '" height="' + 1 + '"></div>');
+            '" height="' + 1 + '" class="enemyWrapper"></div>');
             var img = document.createElement('img');
             img.src = type.img;
             enemyCanvas.css('position', 'absolute');
@@ -74,11 +74,20 @@ var enemies = {
         };
     },
 
+    flushEnemies : function () {
+        var oldEnemies = $('.enemyWrapper');
+        oldEnemies.empty();
+        oldEnemies.remove();
+        this.enemies = [];
+    },
+
     reloadMap: function() {
         /*for(var i=0; i<this.mapEnemies.length; i++){
             this.mapEnemies[i].parentNode.removeChild(this.mapEnemies[i]);
         }*/
         this.mapEnemies = maps.levels[maps.active.level].enemies;
+        this.flushEnemies();
+        this.initEnemies();
     },
 
     renderEnemies: function() {
