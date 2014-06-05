@@ -224,6 +224,6 @@ var render = {
 		items.clearSprites();
 		this.castRays();
 		items.renderSprites();
-        enemies.renderEnemies()
+                enemies.renderEnemies();
 	}
 }

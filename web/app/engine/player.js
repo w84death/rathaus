@@ -22,6 +22,8 @@ var player = {
         this.x = pos.x;
         this.y = pos.y;
 
+        this.nearDoor(this.x,this.y);
+
 
     },
 
@@ -140,5 +142,16 @@ var player = {
         }
 
         return pos;
-    }
+     },
+     nearDoor: function(x,y){
+        if (x - maps.levels[maps.active.level].door.x <  2  &&
+            x - maps.levels[maps.active.level].door.x > -2  &&
+            y - maps.levels[maps.active.level].door.y <  2  &&
+            y - maps.levels[maps.active.level].door.x > -2 ){
+            hud.showItemDescription();
+        }else{
+            hud.HideItemDescription();
+        }
+     }
+
 }

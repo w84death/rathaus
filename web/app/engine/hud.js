@@ -26,6 +26,13 @@ var hud = {
 
     reset : function () {
         this.clearCurrentItem();
+    },
+    showItemDescription: function(){
+            $('#description').innerHTML = maps.active.key.description;
+    },
+    HideItemDescription: function(){
+            $('#description').empty();
+
     }
 
 }
