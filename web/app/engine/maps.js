@@ -4,7 +4,8 @@ var maps = {
     active: {
         level: 0,
         width: 0,
-        height: 0
+        height: 0,
+        key: null,
     },
 
     init: function(){
@@ -20,6 +21,7 @@ var maps = {
         player.y = maps.levels[maps.active.level].start[0].y;
         items.initItems();
         enemies.reloadMap();
+        this.key = items.pickRandomItem(items.currentItems);
     },
 
     nextMap: function(){

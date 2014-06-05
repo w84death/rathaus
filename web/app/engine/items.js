@@ -15,17 +15,14 @@ var items = {
         var level = maps.active.level;
 
         for (var i = maps.levels[level].items.length - 1; i >= 0; i--) {
-            var randomedItem = 0;
+            var randomedItem = null;
             var unique = true;
             do {
-                randomedItem = Math.floor(Math.random() * (this.availableItems.length));
-                if (randomedItem == this.availableItems.length) {
-                    randomedItem = randomedItem - 1;
-                }
+                randomedItem = this.pickRandomItem(this.availableItems);
                 unique = true;
 
                 for (var j = this.currentItems.length - 1; j >= 0; j--) {
-                    if (this.currentItems[j].item.id == this.availableItems[randomedItem].id) {
+                    if (this.currentItems[j].item.id == randomedItem.id) {
                         unique = false;
                         break;
                     }
@@ -35,7 +32,7 @@ var items = {
             var item = {
                 x: maps.levels[level].items[i].x,
                 y: maps.levels[level].items[i].y,
-                item: this.availableItems[randomedItem],
+                item: randomedItem,
                 img: null,
                 visible: false,
             };
@@ -43,6 +40,17 @@ var items = {
         };
 
         this.initSprites();
+    },
+
+    pickRandomItem : function (collection) {
+        var randomedItem = 0;
+
+        randomedItem = Math.floor(Math.random() * (collection.length));
+        if (randomedItem == collection.length) {
+            randomedItem = randomedItem - 1;
+        }
+
+        return collection[randomedItem];
     },
 
     initSprites : function () {
