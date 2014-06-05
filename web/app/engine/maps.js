@@ -10,7 +10,6 @@ var maps = {
     init: function(){
         this.initMaps();
         this.loadMap();
-        items.initItems();
         console.log(':: maps initialized');
     },
 
@@ -19,6 +18,7 @@ var maps = {
         this.active.height = this.levels[maps.active.level].walls.length;
         player.x = maps.levels[maps.active.level].start[0].x;
         player.y = maps.levels[maps.active.level].start[0].y;
+        items.initItems();
         enemies.reloadMap();
     },
 
