@@ -165,11 +165,19 @@ var player = {
         }
      },
      bloodOnScreen: function(x,y){
-        var dx = maps.levels[maps.active.level].door.x - x;
-        var dy = maps.levels[maps.active.level].door.y - y;
-        var dist = Math.sqrt(dx*dx + dy*dy);
-        if (dist < this.bloodThreshold) {
-            $('blood').style.opacity = 1 - dist/2.5;
+        var minDist=100;
+        for (var i=0; i < enemies.enemies.length; i++) {
+            var enemy = enemies.enemies[i];
+            var dx = enemy.x - x;
+            var dy = enemy.y - y;
+            var dist = Math.sqrt(dx*dx + dy*dy);
+            if(minDist>dist){
+                minDist=dist;
+            }
+        }
+        if (minDist < this.bloodThreshold) {
+            //console.log(1 - dist/2.5);
+            $('#blood')[0].style.opacity = 1 - minDist/2.5;
         }
      }
 
