@@ -129,8 +129,7 @@ var enemies = {
                     oldStyles.display = styleDisplay;
                 }
 
-                eSize = (size*0.05)<<0;
-                var styleClip = "rect(0, " + (eSize*(enemy.state+1)) + ", " + eSize + ", " + (eSize*(enemy.state)) + ")";
+                var styleClip = "rect(0, " + (size*(enemy.state+1)) + ", " + size + ", " + (size*(enemy.state)) + ")";
                 if (styleClip != oldStyles.clip) {
                     style.clip = styleClip;
                     oldStyles.clip = styleClip;
