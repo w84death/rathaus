@@ -34,8 +34,8 @@ var player = {
 
     checkItemPickup : function (x, y) {
         for (var i = items.currentItems.length - 1; i >= 0; i--) {
-            var dx = items.currentItems[i].x - x;
-            var dy = items.currentItems[i].y - y;
+            var dx = items.currentItems[i].x + 0.5 - x;
+            var dy = items.currentItems[i].y + 0.5 - y;
             var dist = Math.sqrt(dx*dx + dy*dy);
 
             if (dist < this.pickupThreshold) {
