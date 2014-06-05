@@ -16,8 +16,7 @@ var game = {
 	STATE: 'game',
 	miniMap: {
 		scale: 8,
-		canvas: null,
-		ctx: null
+		id: 'mimimap'
 	},
 
 	init: function(){
@@ -30,18 +29,19 @@ var game = {
 
 	drawMiniMap: function() {
 
-		this.miniMap.canvas = document.getElementById('minimap');
-		this.miniMap.canvas.width = maps.active.width * this.miniMap.scale;
-		this.miniMap.canvas.height = maps.active.height * this.miniMap.scale;		
-        this.miniMap.ctx = this.miniMap.canvas.getContext('2d');
+        var mapDiv = $("<div class='map'></div>");
+        var mapCanvas = $('<canvas width="' + maps.active.width * this.miniMap.scale +
+            '" height="' + maps.active.height * this.miniMap.scale + '"></canvas>');
+        var ctx = mapCanvas[0].getContext('2d');
 
 		for (var y=0; y < maps.active.height; y++) {
 			for (var x=0; x < maps.active.width; x++) {
 				var wall = maps.levels[maps.active.level][y][x];
-				// If there is a wall block at this (x,y)…
+
 				if (wall > 0) {
-					ctx.fillStyle = 'rgb(200,200,200)';
-					// …Then draw a block on the minimap
+					colorValue = wall * 15;
+                    ctx.fillStyle = 'rgb(' + colorValue + ',' + colorValue + ',' + colorValue + ')';
+
 					ctx.fillRect(
 						x * this.miniMap.scale,
 						y * this.miniMap.scale,
@@ -50,7 +50,13 @@ var game = {
 				}
 			}
 		}
+
+		mapDiv.append(mapCanvas);
+        $(this.miniMap.id).append(mapDiv);
 	},
+
+
+
 }
 
 game.init();
