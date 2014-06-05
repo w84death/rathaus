@@ -4,12 +4,14 @@ var maps = {
     active: {
         level: 0,
         width: 0,
-        height: 0
+        height: 0,
+        items: [],
     },
 
     init: function(){
         this.initMaps();
         this.loadMap(0);
+        this.loadItems();
         console.log(':: maps initialized');
     },
 
@@ -18,6 +20,36 @@ var maps = {
         this.active.width = this.levels[level].walls[0].length;
         this.active.height = this.levels[level].walls.length;
         enemies.reloadMap();
+    },
+
+    loadItems: function () {
+        var level = this.active.level;
+
+        for (var i = this.levels[level].items.length - 1; i >= 0; i--) {
+            var randomedItem = 0;
+            var unique = true;
+            do {
+                randomedItem = Math.floor(Math.random() * (availableItems.length));
+                if (randomedItem == availableItems.length) {
+                    randomedItem = randomedItem - 1;
+                }
+                unique = true;
+
+                for (var j = this.active.items.length - 1; j >= 0; j--) {
+                    if (this.active.items[j].item.id == availableItems[randomedItem].id) {
+                        unique = false;
+                        break;
+                    }
+                };
+            } while (!unique);
+
+            var item = {
+                x: this.levels[level].items[i].x,
+                y: this.levels[level].items[i].y,
+                item: availableItems[randomedItem]
+            };
+            this.active.items.push(item);
+        };
     },
 
     initMaps: function(){

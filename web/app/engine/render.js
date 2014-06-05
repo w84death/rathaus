@@ -11,7 +11,7 @@ var render = {
 	twoPI: Math.PI * 2,
 	numTextures: 10,
 	stripIdx: 0,
-		
+
 	init: function(){
 		this.numRays = Math.ceil(this.screenWidth / this.stripWidth);
 		this.fovHalf = this.fov * 0.5;
@@ -46,7 +46,7 @@ var render = {
 		for (var i=0; i < this.numRays; i++) {
 			var rayScreenPos = (-this.numRays/2 + i) * this.stripWidth;
 			var rayViewDist = Math.sqrt(rayScreenPos*rayScreenPos + this.viewDist*this.viewDist);
-			var rayAngle = Math.asin(rayScreenPos / rayViewDist);		
+			var rayAngle = Math.asin(rayScreenPos / rayViewDist);
 			this.castSingleRay(
 				player.rot + rayAngle,
 				this.stripIdx++
@@ -55,7 +55,7 @@ var render = {
 	},
 
 	castSingleRay: function(rayAngle) {
-		
+
 		rayAngle %= this.twoPI;
 		if (rayAngle < 0) rayAngle += this.twoPI;
 
@@ -119,7 +119,7 @@ var render = {
 
 
 		// now check against horizontal lines. It's basically the same, just "turned around".
-		// the only difference here is that once we hit a map block, 
+		// the only difference here is that once we hit a map block,
 		// we check if there we also found one in the earlier, vertical run. We'll know that if dist != 0.
 		// If so, we only register this hit if this distance is smaller.
 
@@ -195,5 +195,5 @@ var render = {
 
 	render: function(){
 		this.castRays();
-	}   
+	}
 }
