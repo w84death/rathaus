@@ -4,6 +4,7 @@ Apple.prototype.constructor = Apple;
 
 function Apple () {
     this.name = 'Apple';
+    this.id = 'JmNyjHfXBFgtx1';
 
     this.fetchDescription();
 }

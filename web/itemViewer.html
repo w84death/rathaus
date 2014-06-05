@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="content"></div>
+        <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="app/API/images.js"></script>
+        <script type="text/javascript">
+        var content = $('#content');
+
+        images.query('Vase', function (images) {
+            for (var i = images.length - 1; i >= 0; i--) {
+                var handle = $('<img src="' + images[i].url + '" alt="' + images[i].id + '" /><span>' + images[i].id + '</span>');
+
+                content.append(handle);
+            };
+        });
+        </script>
+    </body>
+</html>
