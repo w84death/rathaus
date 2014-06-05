@@ -2,19 +2,19 @@ var enemies = {
     enemyTypes: [
         {
             img : 'media/images/enemies/mummy_color.png',
-            moveSpeed : 0.05,
+            moveSpeed : 0.09,
             rotSpeed : 1,
             totalStates : 5
         },
         {
             img : 'media/images/enemies/mummy.png',
-            moveSpeed : 0.02,
+            moveSpeed : 0.06,
             rotSpeed : 0.5,
             totalStates : 5
         },
         {
             img : 'media/images/enemies/metal_skeleton.png',
-            moveSpeed : 0.01,
+            moveSpeed : 0.1,
             rotSpeed : 2,
             totalStates : 5
         }

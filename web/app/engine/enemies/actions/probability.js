@@ -4,11 +4,8 @@ var probability = {
         entity.behaviourPattern[entity.lastAction].value += Math.floor((Math.random() * 5));
     },
     decrease: function(entity) {
-        var random = Math.floor((Math.random() * 10));
-        entity.behaviourPattern[entity.lastAction].value -= random * 2;
-        if (entity.behaviourPattern[entity.lastAction].value < 0) {
-            entity.behaviourPattern[entity.lastAction].value = 0;
-        }
+        var random = Math.floor((Math.random() * 20));
+        entity.behaviourPattern[entity.lastAction].value = 0;
 
         entity.behaviourPattern[entity.reverseAction].value += random;
     }
