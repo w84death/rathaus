@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div id="minimap"></div>
+        <script type="text/javascript" src="lib/jquery-2.1.1.min.js"></script>
+        <script type="text/javascript" src="app/Maps.js"></script>
+        <script type="text/javascript">
+        $().ready(function () {
+            var miniMap = $('#minimap');
+            var map;
+            var mapCanvas;
+            var mapWidth = 0;
+            var mapHeight = 0;
+            var miniMapScale = 8;
+            var colorValue = 0;
+
+            for (var i = levels.length - 1; i >= 0; i--) {
+                map = $("<div class='map'></div>");
+                mapWidth = levels[i][0].length;
+                mapHeight = levels[i].length;
+
+                mapCanvas = $('<canvas width="' + mapWidth * miniMapScale +
+                    '" height="' + mapHeight * miniMapScale + '"></canvas>');
+
+                var ctx = mapCanvas[0].getContext('2d');
+                for (var y=0; y < mapHeight; y++) {
+                    for (var x=0; x < mapWidth; x++) {
+                        var wall = levels[i][y][x];
+                        // If there is a wall block at this (x,y)…
+                        if (wall > 0) {
+                            colorValue = wall * 15;
+                            ctx.fillStyle = 'rgb(' + colorValue +
+                                ',' + colorValue + ',' + colorValue + ')';
+                            // …Then draw a block on the minimap
+                            ctx.fillRect(
+                                x * miniMapScale,
+                                y * miniMapScale,
+                                miniMapScale, miniMapScale
+                            );
+                        }
+                    }
+                }
+
+                map.append(mapCanvas);
+                miniMap.append(map);
+            };
+
+            // var mapWidth = 0;       // Number of map blocks in x-direction
+            // var mapHeight = 0;      // Number of map blocks in y-direction
+            // var miniMapScale = 8;   // How many pixels to draw a map block
+
+            // function init() {
+            //     mapWidth = map[0].length;
+            //     mapHeight = map.length;
+
+            //     drawMiniMap();
+            // }
+
+            // function drawMiniMap() {
+            //     // Draw the topdown view minimap
+            //     var miniMap = $('minimap');
+            //     // Resize the internal canvas dimensions
+            //     miniMap.width = mapWidth * miniMapScale;
+            //     miniMap.height = mapHeight * miniMapScale;
+            //     // Resize the canvas CSS dimensions
+            //     miniMap.style.width = (mapWidth * miniMapScale) + 'px';
+            //     miniMap.style.height = (mapHeight * miniMapScale) + 'px';
+
+            //     // Loop through all blocks on the map
+            // }
+        });
+        </script>
+    </body>
+</html>
