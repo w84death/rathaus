@@ -21,9 +21,13 @@ var game = {
 	init: function(){
 		// init map
 		maps.init();
+		this.bindKeys();
 
 		// draw minimap
-		this.drawMiniMap();	
+		this.drawMiniMap();
+
+		// main cycle
+		this.gameCycle();
 	},
 
 	drawMiniMap: function() {
@@ -51,9 +55,48 @@ var game = {
 		}
 
 		mapDiv.append(mapCanvas);
-        $('#minimap').append(mapDiv);
+        $('.viewport').append(mapDiv);
 	},
 
+	bindKeys: function() {
+		document.onkeydown = function(e) {
+			e = e || window.event;
+			// Which key was pressed?
+			switch (e.keyCode) {
+				// Up, move player forward, ie. increase speed
+				case 38:
+					player.speed = 1; break;
+				// Down, move player backward, set negative speed
+				case 40:
+					player.speed = -1; break;
+				// Left, rotate player left
+				case 37:
+					player.dir = -1; break;
+				// Right, rotate player right
+				case 39:
+					player.dir = 1; break;
+			}
+		}
+		// Stop the player movement/rotation
+		// when the keys are released
+		document.onkeyup = function(e) {
+			e = e || window.event;
+			switch (e.keyCode) {
+				case 38:
+				case 40:
+					player.speed = 0; break;
+				case 37:
+				case 39:
+					player.dir = 0; break;
+			}
+		}
+	},
+
+	gameCycle: function() {
+		//this.move();
+		player.debug();
+		setTimeout(game.gameCycle,1000/30); // Aim for 30 FPS
+	}
 
 
 }

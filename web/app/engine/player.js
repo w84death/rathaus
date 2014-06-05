@@ -1,0 +1,24 @@
+var player = {
+	x : 4,
+	y : 4,
+	dir : 0,
+	rot : 0,
+	speed : 0,
+	moveSpeed : 0.18,
+	rotSpeed : 6 * Math.PI / 180,
+
+	move: function() {
+		var moveStep = this.speed * this.moveSpeed;
+		this.rot += this.dir * this.rotSpeed;
+
+		var newX = this.x + Math.cos(this.rot) * moveStep;
+		var newY = this.y + Math.sin(this.rot) * moveStep;
+
+		this.x = newX;
+		this.y = newY;
+	},
+
+	debug: function(){
+		console.log(this.x, this.y);
+	},
+}
