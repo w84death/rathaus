@@ -212,7 +212,7 @@ var enemies = {
             probability.increase(enemy);
         }
 
-        var pos = collision.checkCollision(newX, newY, 0.35);
+        var pos = collision.checkCollision(enemy, newX, newY, 0.35);
 
         enemy.x = pos.x;
         enemy.y = pos.y;
