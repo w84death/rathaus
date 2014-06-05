@@ -72,6 +72,8 @@ var render = {
 		var dist = 0;	// the distance to the block we hit
 		var xHit = 0; 	// the x and y coord of where the ray hit the block
 		var yHit = 0;
+		var xWallHit = 0;
+		var yWallHit = 0;
 
 		var textureX;	// the x-coord on the texture of the block, ie. what part of the texture are we going to render
 		var wallX;	// the (x,y) map coords of the block
@@ -107,6 +109,8 @@ var render = {
 
 				xHit = x;	// save the coordinates of the hit. We only really use these to draw the rays on minimap.
 				yHit = y;
+				xWallHit = wallX;
+				yWallHit = wallY;
 
 				wallIsHorizontal = true;
 
@@ -140,6 +144,8 @@ var render = {
 					dist = blockDist;
 					xHit = x;
 					yHit = y;
+					xWallHit = wallX;
+					yWallHit = wallY;
 
 					wallType = maps.levels[maps.active.level].walls[wallY][wallX];
 					textureX = x % 1;
@@ -186,7 +192,11 @@ var render = {
 
 			strip.style.height = height+"px";
 			strip.style.top = top+"px";
-			strip.style.zIndex = 100 - (dist<<0);
+			//strip.style.zIndex = 100 - (dist<<0);
+			var dwx = xWallHit - player.x;
+			var dwy = yWallHit - player.y;
+			var wallDist = dwx*dwx + dwy*dwy;
+			strip.style.zIndex = 1000000 -(wallDist*1000)>>0;
 
 			strip.img.style.height = Math.floor(height * this.numTextures) + "px";
 			strip.img.style.width = Math.floor(width*2) +"px";

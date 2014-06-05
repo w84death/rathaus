@@ -113,7 +113,8 @@ var items = {
             img.css('width', size + 'px');
             img.css('height', size + 'px');
             var blockDist = dbx*dbx + dby*dby;
-            var zIndex = 100 - (dist<<0);
+            //var zIndex = 100 - (dist<<0);
+            var zIndex = 1000000 - Math.floor(blockDist*1000);
             img.css('zIndex', zIndex);
         }
 

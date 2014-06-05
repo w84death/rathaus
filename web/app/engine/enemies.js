@@ -111,13 +111,13 @@ var enemies = {
                     oldStyles.left = styleLeft;
                 }
 
-//                var styleZIndex = -(distSquared*1000)>>0;
-//                if (styleZIndex != oldStyles.zIndex) {
-//                    style.zIndex = styleZIndex;
-//                    oldStyles.zIndex = styleZIndex;
-//                }
+                var styleZIndex = 1000000 - ((distSquared*1000)>>0);
+                if (styleZIndex != oldStyles.zIndex) {
+                    style.zIndex = styleZIndex;
+                    oldStyles.zIndex = styleZIndex;
+                }
 
-                style.zIndex = 100 - (dist<<0);
+                //style.zIndex = 100 - (dist<<0);
                 var styleDisplay = 'block';
                 if (styleDisplay != oldStyles.display) {
                     style.display = styleDisplay;
