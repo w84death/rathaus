@@ -8,13 +8,13 @@ var enemies = {
         },
         {
             img : 'media/images/enemies/mummy.png',
-            moveSpeed : 0.05,
+            moveSpeed : 0.02,
             rotSpeed : 0.5,
             totalStates : 5
         },
         {
             img : 'media/images/enemies/metal_skeleton.png',
-            moveSpeed : 0.05,
+            moveSpeed : 0.01,
             rotSpeed : 2,
             totalStates : 5
         }
@@ -147,26 +147,9 @@ var enemies = {
 
     ai: function() {
         for (var i=0; i < this.enemies.length; i++) {
-            var enemy = this.enemies[i];
-            var dx = player.x - enemy.x;
-            var dy = player.y - enemy.y;
-            // Distance from enemy to to player
-            var dist = Math.sqrt(dx*dx + dy*dy);
-            // If distance is more than X, then enemy must chase player
-            if (dist > 2) {
-                var angle = Math.atan2(dy, dx);
-                enemy.rotDeg = angle * 180 / Math.PI;
-                enemy.rot = angle;
-                enemy.speed = 1;
-                var walkCycleTime = 1000;
-                var numWalkSprites = 4;
-                enemy.state = Math.floor((new Date() % walkCycleTime) / (walkCycleTime / numWalkSprites)) + 1;
-                // If not, then stop.
-            } else {
-                enemy.state = 0;
-                enemy.speed = 0;
-            }
-            this.move(this.enemies[i], i);
+            var entity = this.enemies[i];
+            npcAi.think(entity);
+            this.move(entity);
         }
     },
     isBlocking: function(x,y){
@@ -175,16 +158,21 @@ var enemies = {
         }
         return (maps.levels[maps.active.level].walls[Math.floor(y)][Math.floor(x)] != 0);
     },
-    move: function(enemy, i) {
+    move: function(enemy) {
         var moveStep = enemy.speed * enemy.moveSpeed;
         this.rot += enemy.rot * enemy.rotSpeed;
 
         var newX = enemy.x + Math.cos(enemy.rot) * moveStep;
         var newY = enemy.y + Math.sin(enemy.rot) * moveStep;
 
-        if (this.isBlocking(newX, newY)) return;
-
-        //miniMap.update();
+        if (this.isBlocking(newX, newY)) {
+            // increase probability of reverse move
+            probability.decrease(enemy);
+            return
+        } else {
+            // increase probability of the same move
+            probability.increase(enemy);
+        }
 
         enemy.x = newX;
         enemy.y = newY;
