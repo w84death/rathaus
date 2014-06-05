@@ -176,8 +176,9 @@ var player = {
             }
         }
         if (minDist < this.bloodThreshold) {
-            //console.log(1 - dist/2.5);
-            $('#blood')[0].style.opacity = 1 - minDist/2.5;
+            $('#blood')[0].style.opacity = 1 - minDist / 2.5;
+        } else {
+            $('#blood')[0].style.opacity = 0;
         }
      }
 
