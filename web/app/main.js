@@ -25,7 +25,7 @@ var game = {
 
         this.bindKeys();
         console.log(':: game initialized');
-        
+
         console.log(':: starting game cycle..');
         this.gameCycle();
     },

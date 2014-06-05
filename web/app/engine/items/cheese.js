@@ -9,4 +9,4 @@ function Cheese () {
     this.fetchDescription();
 }
 
-availableItems.push(new Cheese());
+items.availableItems.push(new Cheese());

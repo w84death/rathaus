@@ -149,7 +149,16 @@ var render = {
 			}
 			x += dXHor;
 			y += dYHor;
+
+			if (items.spriteMap[wallY] &&
+				items.spriteMap[wallY][wallX] &&
+				!items.spriteMap[wallY][wallX].visible) {
+				items.spriteMap[wallY][wallX].visible = true;
+				items.visibleSprites.push(items.spriteMap[wallY][wallX]);
+			}
 		}
+
+
 
 		if (dist) {
 			//drawRay(xHit, yHit);
@@ -195,7 +204,9 @@ var render = {
 
 
 	render: function(){
+		items.clearSprites();
 		this.castRays();
+		items.renderSprites();
         enemies.renderEnemies()
 	}
 }

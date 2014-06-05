@@ -9,4 +9,4 @@ function Bottle () {
     this.fetchDescription();
 }
 
-availableItems.push(new Bottle());
+items.availableItems.push(new Bottle());

@@ -9,4 +9,4 @@ function Mug () {
     this.fetchDescription();
 }
 
-availableItems.push(new Mug());
+items.availableItems.push(new Mug());

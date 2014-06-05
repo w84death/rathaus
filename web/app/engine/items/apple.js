@@ -9,4 +9,4 @@ function Apple () {
     this.fetchDescription();
 }
 
-availableItems.push(new Apple());
+items.availableItems.push(new Apple());

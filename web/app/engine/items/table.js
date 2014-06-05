@@ -9,4 +9,4 @@ function Table () {
     this.fetchDescription();
 }
 
-availableItems.push(new Table());
+items.availableItems.push(new Table());

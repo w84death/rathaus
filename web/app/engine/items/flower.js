@@ -9,4 +9,4 @@ function Flower () {
     this.fetchDescription();
 }
 
-availableItems.push(new Flower());
+items.availableItems.push(new Flower());

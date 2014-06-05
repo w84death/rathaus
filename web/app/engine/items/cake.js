@@ -9,4 +9,4 @@ function Cake () {
     this.fetchDescription();
 }
 
-availableItems.push(new Cake());
+items.availableItems.push(new Cake());

@@ -9,4 +9,4 @@ function Pear () {
     this.fetchDescription();
 }
 
-availableItems.push(new Pear());
+items.availableItems.push(new Pear());

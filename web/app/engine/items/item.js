@@ -24,5 +24,3 @@ Item.prototype.fetchDescription = function () {
 Item.prototype.getImageUrl = function () {
     return images.getImageUrl(this.id);
 }
-
-var availableItems = [];

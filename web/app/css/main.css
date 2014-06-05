@@ -50,10 +50,10 @@ body {background-color:#222; color:#f8f8f8;}
 .viewport,
 #screen,
 .minimap {image-rendering: optimizeSpeed;
-    image-rendering: -moz-crisp-edges;       
+    image-rendering: -moz-crisp-edges;
     image-rendering: -webkit-optimize-contrast;
     image-rendering: optimize-contrast;
-    -ms-interpolation-mode: nearest-neighbor; 
+    -ms-interpolation-mode: nearest-neighbor;
 	user-select: none;
 	-webkit-user-select: none;}
 
@@ -75,7 +75,9 @@ div#ceiling {height:50%; background-color:rgb(210,224,224);}
 
 footer {text-align:center;}
 
-
+.item {
+    border: 2px solid yellow;
+}
 
 
 

@@ -9,4 +9,4 @@ function Chair () {
     this.fetchDescription();
 }
 
-availableItems.push(new Chair());
+items.availableItems.push(new Chair());
