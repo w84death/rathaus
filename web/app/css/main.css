@@ -29,8 +29,8 @@ p {font-size:1em;}
 
 body {background-color:#444; color:#f8f8f8;}
 
-.viewport {position:relative; width:800px; height:400px; margin:0 auto;}
-.minimap {position:absolute; top:0; right:0;}
+.viewport {position:relative; width:640px; height:400px; margin:0 auto; border:4px solid #000;}
+.minimap {position:absolute; bottom:0; right:0; background-color:rgb(99,118,118);}
 
 #screen {position:relative; width:320px; height:200px; overflow:hidden;
     border:1px solid black;}
@@ -38,6 +38,8 @@ body {background-color:#444; color:#f8f8f8;}
 div#floor,
 div#ceiling {position:absolute; width:100%; height:100%; background-color:rgb(99,118,118);}
 div#ceiling {height:50%; background-color:rgb(210,224,224);}
+
+footer {text-align:center;}
 
 
 

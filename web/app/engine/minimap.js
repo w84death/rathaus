@@ -1,6 +1,6 @@
 var miniMap = {
 
-    scale: 8,
+    scale: 4,
     div: null,
     ctx: null,
     canvas: null,
@@ -22,7 +22,8 @@ var miniMap = {
 
     update: function(){
         this.ctx.clearRect ( 0 , 0 , maps.active.width * this.scale , maps.active.height * this.scale );
-    	for (var y=0; y < maps.active.height; y++) {
+    	
+        for (var y=0; y < maps.active.height; y++) {
             for (var x=0; x < maps.active.width; x++) {
                 var wall = maps.levels[maps.active.level][y][x];
                 if (wall > 0) {
@@ -37,31 +38,29 @@ var miniMap = {
                 }
             }
         }
+
         var startHandX = player.x + 0.25;
         var startHandY = player.y + 0.25;
         var endHandX = player.x + 0.25 + Math.cos(player.rot);
         var endHandY = player.y + 0.25 + Math.sin(player.rot);
         this.ctx.fillStyle = 'red';
         this.ctx.fillRect(
-                        player.x * this.scale,
-                        player.y * this.scale,
-                        this.scale * 0.5,
-                        this.scale * 0.5
-                    );
+            player.x * this.scale,
+            player.y * this.scale,
+            this.scale * 0.5,
+            this.scale * 0.5
+        );
         this.ctx.strokeStyle = 'red';
         this.ctx.beginPath();
         this.ctx.moveTo(
-                        startHandX * this.scale,
-                        startHandY * this.scale);
+            startHandX * this.scale,
+            startHandY * this.scale
+        );
         this.ctx.lineTo(
-                        endHandX * this.scale,
-                        endHandY * this.scale);
+            endHandX * this.scale,
+            endHandY * this.scale
+        );
         this.ctx.stroke();
-        //this.ctx.fillRect(
-        //                player.x * this.scale,
-        //                (player.y + 0.25) * this.scale,
-        //                this.scale ,
-        //               this.scale *0.1
-        //            );
+
     },
 }
