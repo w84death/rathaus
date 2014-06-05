@@ -28,9 +28,11 @@ var hud = {
         this.clearCurrentItem();
     },
     showItemDescription: function(){
-            $('#description').innerHTML = maps.active.key.description;
+            $('#description').empty();
+            var text=$('<span>If you want to open this door, you should find: '+maps.active.key.item.description+'</span>');
+            $('#description').append(text);
     },
-    HideItemDescription: function(){
+    hideItemDescription: function(){
             $('#description').empty();
 
     }

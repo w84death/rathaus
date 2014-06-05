@@ -8,6 +8,7 @@ var player = {
     rotSpeed : 6 * Math.PI / 180,
     item : null,
     pickupThreshold : 0.6,
+    doorThreshold : 1.5,
 
     move: function() {
         var moveStep = this.speed * this.moveSpeed;
@@ -21,7 +22,6 @@ var player = {
 
         this.x = pos.x;
         this.y = pos.y;
-
         this.nearDoor(this.x,this.y);
 
 
@@ -144,13 +144,22 @@ var player = {
         return pos;
      },
      nearDoor: function(x,y){
-        if (x - maps.levels[maps.active.level].door.x <  2  &&
-            x - maps.levels[maps.active.level].door.x > -2  &&
-            y - maps.levels[maps.active.level].door.y <  2  &&
-            y - maps.levels[maps.active.level].door.x > -2 ){
+        var dx = maps.levels[maps.active.level].door.x - x;
+        var dy = maps.levels[maps.active.level].door.y - y;
+        var dist = Math.sqrt(dx*dx + dy*dy);
+
+        if (dist < this.doorThreshold) {
             hud.showItemDescription();
+            this.jumpToNextMap();
         }else{
-            hud.HideItemDescription();
+            hud.hideItemDescription();
+        }
+     },
+     jumpToNextMap: function(){
+        if (this.item != null){
+            if (this.item.id == maps.active.key.item.id){
+                maps.nextMap();
+            }
         }
      }
 

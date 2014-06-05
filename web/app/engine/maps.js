@@ -21,7 +21,7 @@ var maps = {
         player.y = maps.levels[maps.active.level].start[0].y;
         items.initItems();
         enemies.reloadMap();
-        this.key = items.pickRandomItem(items.currentItems);
+        this.active.key = items.pickRandomItem(items.currentItems);
     },
 
     nextMap: function(){
@@ -74,7 +74,7 @@ this.levels.push({
     enemies: [{x:8,y:8,type:0},{x:26,y:3,type:1},{x:17,y:31,type:2}],
     items: [{x:6,y:6},{x:11,y:26},{x:11,y:11},{x:27,y:28},{x:27,y:3},{x:24,y:3}],
     start:[{x:15,y:17}],
-    door:[{x:25,y:27}]
+    door:{x:25,y:27}
 });
 this.levels.push({
     walls: [
@@ -116,7 +116,7 @@ this.levels.push({
     enemies: [{x:16,y:19,type:2}],
     items: [{x:6,y:2},{x:6,y:6},{x:2,y:14},{x:21,y:6},{x:30,y:3}],
     start:[{x:17,y:26}],
-    door:[{x:12,y:1}]
+    door:{x:12,y:1}
 });
 this.levels.push({
     walls: [
@@ -158,7 +158,7 @@ this.levels.push({
     enemies: [{x:29,y:10,type:0},{x:22,y:14,type:1},{x:27,y:32,type:2}],
     items: [{x:2,y:2},{x:2,y:30},{x:30,y:2},{x:30,y:32},{x:30,y:11},{x:30,y:14}],
     start:[{x:17,y:22}],
-    door:[{x:18,y:27}]
+    door:{x:18,y:27}
 });
 
 this.levels.push({
@@ -201,7 +201,7 @@ this.levels.push({
     enemies: [{x:9,y:16,type:0},{x:30,y:18,type:1},{x:30,y:31,type:2}],
     items: [{x:3,y:2},{x:15,y:21},{x:3,y:19}],
     start:[{x:20,y:2}],
-    door:[{x:31,y:1}]
+    door:{x:31,y:1}
 });
 
 this.levels.push({
@@ -244,7 +244,7 @@ this.levels.push({
     enemies: [{x:8,y:14,type:0},{x:30,y:18,type:1},{x:30,y:30,type:2}],
     items: [{x:6,y:2},{x:3,y:8},{x:22,y:20}],
     start:[{x:3,y:2}],
-    door:[{x:3,y:1}]
+    door:{x:3,y:1}
 });
     }
 }
