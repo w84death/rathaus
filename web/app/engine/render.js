@@ -9,7 +9,7 @@ var render = {
 	fovHalf: null,
 	viewDist: null,
 	twoPI: Math.PI * 2,
-	numTextures: 10,
+	numTextures: 11,
 	stripIdx: 0,
 
 	init: function(){
