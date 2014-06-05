@@ -23,6 +23,7 @@ var maps = {
     },
 
     loadItems: function () {
+        this.active.items = [];
         var level = this.active.level;
 
         for (var i = this.levels[level].items.length - 1; i >= 0; i--) {

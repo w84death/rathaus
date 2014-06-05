@@ -60,16 +60,31 @@ var miniMap = {
             endHandX * this.scale,
             endHandY * this.scale
         );
+
+        var enemy = null;
         for (var i = 0; i < maps.levels[maps.active.level].enemies.length; i++) {
             enemy = maps.levels[maps.active.level].enemies[i];
             this.ctx.fillStyle = 'red';
             this.ctx.fillRect(
-            enemy.x * this.scale,
-            enemy.y * this.scale,
-            this.scale * 0.5,
-            this.scale * 0.5
+                enemy.x * this.scale,
+                enemy.y * this.scale,
+                this.scale * 0.5,
+                this.scale * 0.5
             );
         }
+
+        var item = null;
+        for (var i = 0; i < maps.levels[maps.active.level].items.length; i++) {
+            item = maps.levels[maps.active.level].items[i];
+            this.ctx.fillStyle = 'blue';
+            this.ctx.fillRect(
+                item.x * this.scale,
+                item.y * this.scale,
+                this.scale * 0.5,
+                this.scale * 0.5
+            );
+        }
+
         this.ctx.stroke();
 
     },
