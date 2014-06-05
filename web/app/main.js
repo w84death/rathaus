@@ -11,6 +11,7 @@
     ----------------------------------------------------------------------------
 */
 
+
 var game = {
 
     STATE: 'game',
@@ -63,9 +64,10 @@ var game = {
 
     gameCycle: function() {
         player.move();
-        
+        render.render();
+
         // DEBUG STUFF
-        player.debug();
+        //player.debug();
         setTimeout(game.gameCycle,1000/30); // Aim for 30 FPS
     }
 
