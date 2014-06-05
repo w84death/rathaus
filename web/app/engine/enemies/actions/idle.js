@@ -1,5 +1,5 @@
 var idle = function(entity) {
-    entity.state = 0;
+    //entity.state = 0;
     entity.speed = 0;
 
 

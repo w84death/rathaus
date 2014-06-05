@@ -5,7 +5,7 @@ var goRight = function(entity) {
     entity.speed = 1;
     var walkCycleTime = 1000;
     var numWalkSprites = 4;
-    entity.state = Math.floor((new Date() % walkCycleTime) / (walkCycleTime / numWalkSprites)) + 1;
+    //entity.state = Math.floor((new Date() % walkCycleTime) / (walkCycleTime / numWalkSprites)) + 1;
 
 
     // increase probability for this move

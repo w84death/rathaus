@@ -62,6 +62,18 @@ var enemies = {
         }
     },
 
+    nextEnemiesFrame : function() {
+        for (var i = enemies.enemies.length - 1; i >= 0; i--) {
+            var newState = enemies.enemies[i].state + 1;
+
+            if (newState == enemies.enemies[i].totalStates) {
+                newState = 0;
+            }
+
+            enemies.enemies[i].state = newState;
+        };
+    },
+
     reloadMap: function() {
         /*for(var i=0; i<this.mapEnemies.length; i++){
             this.mapEnemies[i].parentNode.removeChild(this.mapEnemies[i]);
@@ -200,3 +212,5 @@ var enemies = {
         console.log(enemies);
     },
 }
+
+setInterval(enemies.nextEnemiesFrame, 1000);
