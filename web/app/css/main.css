@@ -1,0 +1,37 @@
+/* boilerplate */
+
+html,
+button,
+input,
+select,
+textarea { color: #222; }
+
+hr { display: block; height: 1px; border: 0; border-top: 1px solid #222; margin: 1em 0; padding: 0; }
+
+/* layout_ */
+
+body {width:864px; margin:0 50px;}
+
+ul,li {margin:0; padding:0; list-style:none;}
+a:link, a:visited, a:active {text-decoration:underline;}
+
+
+/* typography_ */
+
+html { font-size: 1em; line-height: 1.4; font-family: Helvetica, Arial, sans-serif;
+    text-rendering: optimizeLegibility;}
+h1 {font-size:1.8em;}
+h2 {font-size:1.2em;}
+nav {font-size:1.2em;}
+p {font-size:1em;}
+
+/* theme_ */
+
+body {background-color:#444; color:#f8f8f8;}
+
+
+
+
+
+
+
