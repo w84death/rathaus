@@ -29,10 +29,13 @@ var enemies = {
         for (var i=0; i < this.mapEnemies.length; i++) {
             var enemy = this.mapEnemies[i];
             var type = this.enemyTypes[enemy.type];
+            var enemyCanvas = $('<div width="' + 1 +
+            '" height="' + 1 + '"></div>');
             var img = document.createElement('img');
             img.src = type.img;
-            img.style.display = 'none';
-            img.style.position = 'absolute';
+            enemyCanvas.css('position', 'absolute');
+            enemyCanvas.css('display', 'none');
+            enemyCanvas.css('overflow', 'hidden');
 
             enemy.state = 0;
             enemy.rot = 0;
@@ -52,8 +55,10 @@ var enemies = {
                 zIndex : 0
             };
             enemy.img = img;
+            enemy.canvas = enemyCanvas[0];
             enemies.enemies.push(enemy);
-            screen.appendChild(img);
+            enemyCanvas.append(img);
+            screen.appendChild(enemyCanvas[0]);
         }
     },
 
@@ -68,6 +73,7 @@ var enemies = {
         for (var i=0;i<this.enemies.length;i++) {
             var enemy = this.enemies[i];
             var img = enemy.img;
+            var canvas = enemy.canvas;
 
             var dx = enemy.x - player.x;
             var dy = enemy.y - player.y;
@@ -88,11 +94,13 @@ var enemies = {
                 var x = Math.tan(angle) * render.viewDist;
 
                 var style = img.style;
+                var canvasStyle = canvas.style;
                 var oldStyles = enemy.oldStyles;
 
                 // height is equal to the sprite size
                 if (size != oldStyles.height) {
-                    style.height =  size + "px";
+                    style.height = size + "px";
+                    canvasStyle.height = size + "px";
                     oldStyles.height = size;
                 }
 
@@ -100,6 +108,7 @@ var enemies = {
                 var styleWidth = size * enemy.totalStates;
                 if (styleWidth != oldStyles.width) {
                     style.width = styleWidth + "px";
+                    canvasStyle.width = size + "px";
                     oldStyles.width = styleWidth;
                 }
 
@@ -107,6 +116,7 @@ var enemies = {
                 var styleTop = ((render.screenHeight-size)/2);
                 if (styleTop != oldStyles.top) {
                     style.top = styleTop + "px";
+                    canvasStyle.top = styleTop + "px";
                     oldStyles.top = styleTop;
                 }
 
@@ -114,23 +124,29 @@ var enemies = {
                 var styleLeft = (render.screenWidth/2 + x - size/2 - size*enemy.state);
                 if (styleLeft != oldStyles.left) {
                     style.left = styleLeft + "px";
+                    canvasStyle.left = (render.screenWidth/2 + x) + "px";
                     oldStyles.left = styleLeft;
                 }
 
                 var styleZIndex = 1000000 - ((distSquared*1000)>>0);
                 if (styleZIndex != oldStyles.zIndex) {
                     style.zIndex = styleZIndex;
+                    canvasStyle.zIndex = styleZIndex;
                     oldStyles.zIndex = styleZIndex;
                 }
 
                 var styleDisplay = "block";
                 if (styleDisplay != oldStyles.display) {
                     style.display = styleDisplay;
+                    canvasStyle.display = styleDisplay;
                     oldStyles.display = styleDisplay;
                 }
 
-                var styleClip = "rect(0, " + (size*(enemy.state+1)) + ", " + size + ", " + (size*(enemy.state)) + ")";
+                var styleClip = "rect(0, " + (100*(enemy.state + 1)) + ", 120, " + (size*(enemy.state)) + ")";
+
                 if (styleClip != oldStyles.clip) {
+                    style.marginLeft = (-size * enemy.state) + 'px';
+
                     style.clip = styleClip;
                     oldStyles.clip = styleClip;
                 }
@@ -139,6 +155,7 @@ var enemies = {
                 var styleDisplay = "none";
                 if (styleDisplay != enemy.oldStyles.display) {
                     img.style.display = styleDisplay;
+                    canvas.style.display = styleDisplay;
                     enemy.oldStyles.display = styleDisplay;
                 }
             }
