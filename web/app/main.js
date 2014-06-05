@@ -20,6 +20,7 @@ var game = {
         // init map
         maps.init();
         miniMap.init();
+        enemies.initEnemies();
 
         this.bindKeys();
         console.log(':: game initialized');
@@ -27,7 +28,7 @@ var game = {
         console.log(':: starting game cycle..');
         this.gameCycle();
     },
-
+    lastUpdate: Date.now(),
     bindKeys: function() {
         document.onkeydown = function(e) {
             e = e || window.event;
@@ -61,10 +62,15 @@ var game = {
             }
         }
     },
-
     gameCycle: function() {
         player.move();
         render.render();
+
+        var now = Date.now();
+        var dt = now - this.lastUpdate;
+        enemies.ai(dt);
+        enemies.renderEnemies();
+        //enemies.debug();
 
         // DEBUG STUFF
         //player.debug();
