@@ -52,7 +52,7 @@ var game = {
 		}
 
 		mapDiv.append(mapCanvas);
-        $(this.miniMap.id).append(mapDiv);
+        $('#minimap').append(mapDiv);
 	},
 
 
