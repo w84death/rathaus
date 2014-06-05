@@ -1,6 +1,6 @@
 var miniMap = {
 
-    scale: 4,
+    scale: 2,
     div: null,
     ctx: null,
     canvas: null,
@@ -25,7 +25,7 @@ var miniMap = {
     	
         for (var y=0; y < maps.active.height; y++) {
             for (var x=0; x < maps.active.width; x++) {
-                var wall = maps.levels[maps.active.level][y][x];
+                var wall = maps.levels[maps.active.level].walls[y][x];
                 if (wall > 0) {
                     colorValue = wall * 15;
                     this.ctx.fillStyle = 'rgb(' + colorValue + ',' + colorValue + ',' + colorValue + ')';
