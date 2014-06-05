@@ -1,7 +1,7 @@
 
 function Item () {
     this.name = null;
-    this.pictureId = null;
+    this.id = null;
     this.description = null;
 }
 
@@ -19,6 +19,10 @@ Item.prototype.fetchDescription = function () {
     dictionary.query(this.name, function (description) {
         that.description = description;
     });
+}
+
+Item.prototype.getImageUrl = function () {
+    return images.getImageUrl(this.id);
 }
 
 var availableItems = [];
