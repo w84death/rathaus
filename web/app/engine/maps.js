@@ -10,15 +10,16 @@ var maps = {
 
     init: function(){
         this.initMaps();
-        this.loadMap(0);
+        this.loadMap();
         this.loadItems();
         console.log(':: maps initialized');
     },
 
-    loadMap: function(level){
-        this.active.level = level;
-        this.active.width = this.levels[level].walls[0].length;
-        this.active.height = this.levels[level].walls.length;
+    loadMap: function(){
+        this.active.width = this.levels[maps.active.level].walls[0].length;
+        this.active.height = this.levels[maps.active.level].walls.length;
+        player.x = maps.levels[maps.active.level].start[0].x;
+        player.y = maps.levels[maps.active.level].start[0].y;
         enemies.reloadMap();
     },
 
@@ -27,8 +28,8 @@ var maps = {
         if(this.active.level > this.levels.length-1){
             this.active.level = 0;
         }
-        player.x = maps.levels[maps.active.level].start[0].x;
-        player.y = maps.levels[maps.active.level].start[0].y;
+        this.loadMap();
+
     },
 
     loadItems: function () {
