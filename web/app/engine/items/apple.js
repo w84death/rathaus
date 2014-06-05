@@ -7,3 +7,5 @@ function Apple () {
 
     this.fetchDescription();
 }
+
+availableItems.push(new Apple());

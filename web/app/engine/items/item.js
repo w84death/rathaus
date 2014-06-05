@@ -20,3 +20,5 @@ Item.prototype.fetchDescription = function () {
         that.description = description;
     });
 }
+
+var availableItems = [];
