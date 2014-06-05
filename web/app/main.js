@@ -92,8 +92,27 @@ var game = {
 		}
 	},
 
+	movePlayer: function() {
+		if (isBlocking(newX, newY)) {
+			// No, bail out
+			return;
+		}
+
+		player.move();
+	},
+
+	isBlocking: function(){
+		if (y < 0 || y >= maps.activce.height || x < 0 || x >= maps.active.width) {
+			return true;
+		}
+		return (maps.levels[maps.active.level][Math.floor(y)][Math.floor(x)] != 0);
+	}
+	},
+
 	gameCycle: function() {
-		//this.move();
+		this.movePlayer();
+
+		// DEBUG STUFF
 		player.debug();
 		setTimeout(game.gameCycle,1000/30); // Aim for 30 FPS
 	}
