@@ -161,6 +161,7 @@ var player = {
         if (this.item != null){
             if (this.item.id == maps.active.key.item.id){
                 maps.nextMap();
+                hud.reset();
             }
         }
      },

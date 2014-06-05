@@ -26,7 +26,9 @@ var hud = {
 
     reset : function () {
         this.clearCurrentItem();
+        player.item = null;
     },
+
     showItemDescription: function(){
             $('#description').empty();
             var text=$('<span>If you want to open this door, you should find: '+maps.active.key.item.description+'</span>');
