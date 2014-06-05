@@ -10,12 +10,13 @@ var render = {
 	viewDist: (this.screenWidth/2) / Math.tan((this.fov / 2)),
 	twoPI: Math.PI * 2,
 	numTextures: 4,
+	stripIdx: 0,
 		
 	init: function(){
 		var screen = document.getElementById('screen');
 
 		for (var i=0; i < this.screenWidth; i+=this.stripWidth) {
-			var strip = dc('div');
+			var strip = document.createElement('div');
 			strip.style.position = 'absolute';
 			strip.style.left = i + 'px';
 			strip.style.width = this.stripWidth + 'px';
@@ -23,51 +24,39 @@ var render = {
 			strip.style.overflow = 'hidden';
 
 			var img = new Image();
-			img.src = 'media/images/walls/walls.png';
+			img.src = 'media/images/walls.png';
 			img.style.position = 'absolute';
 			img.style.left = '0px';
 
 			strip.appendChild(img);
-			// Assign the image to a property on the strip element
-			// so we have easy access to the image later
 			strip.img = img;
 
-			screenStrips.push(strip);
+			this.screenStrips.push(strip);
 			screen.appendChild(strip);
 		}
 		console.log(':: rendering inicialized');
 	},
 
 	castRays: function() {
-		var stripIdx = 0;
-		for (var i=0; i < this.this.numRays; i++) {
-			// Where on the screen does ray go through?
-			var rayScreenPos = (-this.this.numRays/2 + i) * this.stripWidth;
-
-			// The distance from the viewer to the point
-			// on the screen, simply Pythagoras.
+		this.stripIdx = 0;
+		for (var i=0; i < this.numRays; i++) {
+			var rayScreenPos = (-this.numRays/2 + i) * this.stripWidth;
 			var rayViewDist = Math.sqrt(rayScreenPos*rayScreenPos + this.viewDist*this.viewDist);
-
-			// The angle of the ray, relative to the viewing direction
-			// Right triangle: a = sin(A) * c
-			var rayAngle = Math.asin(rayScreenPos / rayViewDist);
+			var rayAngle = Math.asin(rayScreenPos / rayViewDist);		
 			this.castSingleRay(
-				// Add the players viewing direction
-				// to get the angle in world space
 				player.rot + rayAngle,
-				stripIdx++
+				this.stripIdx++
 			);
 		}
 	},
 
 	castSingleRay: function(rayAngle) {
 		
-		// first make sure the angle is between 0 and 360 degrees
-		rayAngle %= twoPI;
-		if (rayAngle < 0) rayAngle += twoPI;
+		rayAngle %= this.twoPI;
+		if (rayAngle < 0) rayAngle += this.twoPI;
 
 		// moving right/left? up/down? Determined by which quadrant the angle is in.
-		var right = (rayAngle > twoPI * 0.75 || rayAngle < twoPI * 0.25);
+		var right = (rayAngle > this.twoPI * 0.75 || rayAngle < this.twoPI * 0.25);
 		var up = (rayAngle < 0 || rayAngle > Math.PI);
 
 		var wallType = 0;
@@ -98,17 +87,18 @@ var render = {
 		var x = right ? Math.ceil(player.x) : Math.floor(player.x);	// starting horizontal position, at one of the edges of the current map block
 		var y = player.y + (x - player.x) * slope;			// starting vertical position. We add the small horizontal step we just made, multiplied by the slope.
 
-		while (x >= 0 && x < mapWidth && y >= 0 && y < mapHeight) {
+		while (x >= 0 && x < maps.active.width && y >= 0 && y < maps.active.height) {
 			var wallX = Math.floor(x + (right ? 0 : -1));
 			var wallY = Math.floor(y);
 
 			// is this point inside a wall block?
-			if (map[wallY][wallX] > 0) {
+			if (maps.levels[maps.active.level].walls[wallY][wallX] > 0) {
+				console.log(x,y)
 				var distX = x - player.x;
 				var distY = y - player.y;
 				dist = distX*distX + distY*distY;	// the distance from the player to this point, squared.
 
-				wallType = map[wallY][wallX]; // we'll remember the type of wall we hit for later
+				wallType = maps.levels.walls[wallY][wallX]; // we'll remember the type of wall we hit for later
 				textureX = y % 1;	// where exactly are we on the wall? textureX is the x coordinate on the texture that we'll use later when texturing the wall.
 				if (!right) textureX = 1 - textureX; // if we're looking to the left side of the map, the texture should be reversed
 
@@ -136,10 +126,10 @@ var render = {
 		var y = up ? Math.floor(player.y) : Math.ceil(player.y);
 		var x = player.x + (y - player.y) * slope;
 
-		while (x >= 0 && x < mapWidth && y >= 0 && y < mapHeight) {
+		while (x >= 0 && x < maps.active.width && y >= 0 && y < maps.active.height) {
 			var wallY = Math.floor(y + (up ? -1 : 0));
 			var wallX = Math.floor(x);
-			if (map[wallY][wallX] > 0) {
+			if (maps.levels.walls[wallY][wallX] > 0) {
 				var distX = x - player.x;
 				var distY = y - player.y;
 				var blockDist = distX*distX + distY*distY;
@@ -148,7 +138,7 @@ var render = {
 					xHit = x;
 					yHit = y;
 
-					wallType = map[wallY][wallX];
+					wallType = maps.levels.walls[wallY][wallX];
 					textureX = x % 1;
 					if (up) textureX = 1 - textureX;
 				}
@@ -161,7 +151,7 @@ var render = {
 		if (dist) {
 			//drawRay(xHit, yHit);
 
-			var strip = screenStrips[stripIdx];
+			var strip = this.screenStrips[this.stripIdx];
 
 			dist = Math.sqrt(dist);
 
@@ -174,26 +164,26 @@ var render = {
 			// "real" wall height in the game world is 1 unit, the distance from the player to the screen is viewDist,
 			// thus the height on the screen is equal to wall_height_real * viewDist / dist
 
-			var height = Math.round(viewDist / dist);
+			var height = Math.round(this.viewDist / dist);
 
 			// width is the same, but we have to stretch the texture to a factor of stripWidth to make it fill the strip correctly
-			var width = height * stripWidth;
+			var width = height * this.stripWidth;
 
 			// top placement is easy since everything is centered on the x-axis, so we simply move
 			// it half way down the screen and then half the wall height back up.
-			var top = Math.round((screenHeight - height) / 2);
+			var top = Math.round((this.screenHeight - height) / 2);
 
 			strip.style.height = height+"px";
 			strip.style.top = top+"px";
 
-			strip.img.style.height = Math.floor(height * numTextures) + "px";
+			strip.img.style.height = Math.floor(height * this.numTextures) + "px";
 			strip.img.style.width = Math.floor(width*2) +"px";
 			strip.img.style.top = -Math.floor(height * (wallType-1)) + "px";
 
 			var texX = Math.round(textureX*width);
 
-			if (texX > width - stripWidth)
-				texX = width - stripWidth;
+			if (texX > width - this.stripWidth)
+				texX = width - this.stripWidth;
 
 			strip.img.style.left = -texX + "px";
 
@@ -202,6 +192,6 @@ var render = {
 
 
 	render: function(){
-		
+		this.castRays();
 	}   
 }

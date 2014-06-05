@@ -36,7 +36,17 @@ body {background-color:#444; color:#f8f8f8;}
 .minimap {position:absolute; bottom:0; right:0; background-color:rgb(99,118,118);}
 
 #screen {position:fixed; width:320px; height:200px; overflow:hidden;}
-    
+
+.viewport,
+#screen,
+.minimap {image-rendering: optimizeSpeed;
+    image-rendering: -moz-crisp-edges;       
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor; 
+	user-select: none;
+	-webkit-user-select: none;}
+
 div#floor,
 div#ceiling {position:absolute; width:100%; height:100%; background-color:rgb(99,118,118);}
 div#ceiling {height:50%; background-color:rgb(210,224,224);}

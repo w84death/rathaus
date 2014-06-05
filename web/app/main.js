@@ -20,7 +20,7 @@ var game = {
         // init map
         maps.init();
         miniMap.init();
-
+        render.init();
         this.bindKeys();
         console.log(':: game initialized');
         
