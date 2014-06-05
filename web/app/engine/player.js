@@ -14,8 +14,17 @@ var player = {
 		var newX = this.x + Math.cos(this.rot) * moveStep;
 		var newY = this.y + Math.sin(this.rot) * moveStep;
 
+		if (this.isBlocking(newX, newY)) return;
+
 		this.x = newX;
 		this.y = newY;
+	},
+
+	isBlocking: function(x,y){
+		if (y < 0 || y >= maps.active.height || x < 0 || x >= maps.active.width) {
+			return true;
+		}
+		return (maps.levels[maps.active.level][Math.floor(y)][Math.floor(x)] != 0);
 	},
 
 	debug: function(){
