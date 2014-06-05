@@ -5,9 +5,11 @@ var collision = {
             y : enemy.y
         };
 
-        lowX = Math.floor(newX-0.6);
-        lowY = Math.floor(newY-0.6);
-        if ( maps.levels[maps.active.level].walls[lowX][lowY] == 0){
+        lowX = Math.floor(newX);
+        lowY = Math.floor(newY);
+        highX = Math.floor(newX) +1;
+        highY= Math.floor(newY) +1;
+        if ( maps.levels[maps.active.level].walls[lowX][lowY] == 0 || maps.levels[maps.active.level].walls[highX][highY] == 0){
             pos.x=newX;
             pos.y=newY;
 
