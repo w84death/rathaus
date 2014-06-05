@@ -9,12 +9,13 @@ var maps = {
 	
 	init: function(){
 		this.initMaps();
+		this.loadMap(0);
 	},
 
 	loadMap: function(level){
 		this.active.level = level;
-		this.active.width = levels[level][0].length;
-		this.active.height = levels[level].length;
+		this.active.width = this.levels[level][0].length;
+		this.active.height = this.levels[level].length;
 	},
 
 	initMaps: function(){
@@ -26,6 +27,4 @@ var maps = {
 			[1,1,1,1,1,1,1]
 		]);
 	}
-
-
 }

@@ -14,10 +14,10 @@
 var game = {
 
 	STATE: 'game',
-	minimap: {
+	miniMap: {
 		scale: 8,
-		canvas:null,
-		ctx:null
+		canvas: null,
+		ctx: null
 	},
 
 	init: function(){
