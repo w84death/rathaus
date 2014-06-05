@@ -46,6 +46,8 @@ var items = {
     },
 
     initSprites : function () {
+        $('img.item').remove();
+
         this.spriteMap = [];
         var level = maps.active.level;
         var map = maps.levels[level];
@@ -81,6 +83,7 @@ var items = {
 
     renderSprites : function () {
         var viewDist = (render.screenWidth/2) / Math.tan((render.fov / 2));
+
         for (var i = 0; i < this.visibleSprites.length; i++) {
             var sprite = this.visibleSprites[i];
             var img = sprite.img;

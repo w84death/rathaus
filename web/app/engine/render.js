@@ -118,6 +118,13 @@ var render = {
 			}
 			x += dXVer;
 			y += dYVer;
+
+			if (items.spriteMap[wallY] &&
+				items.spriteMap[wallY][wallX] &&
+				!items.spriteMap[wallY][wallX].visible) {
+				items.spriteMap[wallY][wallX].visible = true;
+				items.visibleSprites.push(items.spriteMap[wallY][wallX]);
+			}
 		}
 
 
