@@ -36,7 +36,7 @@ p {font-size:1em;}
 body {background-color:#222; color:#f8f8f8;}
 
 .viewport {position: fixed; width:1024px; height:600px; background-color:#222;
-  top: 50%; left: 50%; margin-top: -300px; margin-left: -512px;}
+  top: 50%; left: 50%; margin-top: -300px; margin-left: -512px; overflow:hidden;}
 
 .viewport:after {
 	-webkit-box-shadow: inset 0px 0px 85px rgba(0,0,0,0.8);
@@ -51,9 +51,6 @@ body {background-color:#222; color:#f8f8f8;}
 #minimap:after {display:block;content:''; position:absolute; top:-18px; left:-23px;
     width:237px; height:244px; background: transparent url('../../media/images/minimap.png');}
 
-#rat {position:absolute; display:none; bottom:0; right:150px; width:266px; height:320px;
-    background: transparent url('../../media/images/rat.png');}
-
 .currentItem {position:absolute; top:0; left:0; opacity:0.8;}
 .currentItem img { width: 100px; height: 100px; border: 2px solid yellow; margin: 0}
 .currentItem span {
@@ -65,7 +62,6 @@ body {background-color:#222; color:#f8f8f8;}
     background: black;
     margin: 0;
 }
-
 
 #screen {position:fixed; width:1024px; height:600px; overflow:hidden;}
 #screen div {z-index:10;}
@@ -242,6 +238,16 @@ html,body {
     }
 }
 
+#rat {position:absolute; display:none; bottom:-20px; right:150px; width:266px; height:320px;
+    background: transparent url('../../media/images/rat.png');
+-webkit-animation: wobble 5s infinite;}
+
+@-webkit-keyframes wobble  {
+  0%  { -webkit-transform:rotate(0deg);  bottom:-20px;}
+  20%  { -webkit-transform:rotate(2deg); bottom:-35px; }
+  50%  { -webkit-transform:rotate(-2deg); bottom:-20px;}
+  100%  { -webkit-transform:rotate(0deg); bottom:-10px; }
+}
 
 
 
