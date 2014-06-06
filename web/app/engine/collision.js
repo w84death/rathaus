@@ -1,19 +1,19 @@
 var collision = {
-    checkCollision: function(enemy, newX, newY, radius){
+   checkCollision: function(enemy, newX, newY, radius){
         var pos = {
             x : enemy.x,
             y : enemy.y
         };
 
-        lowX = Math.floor(newX);
+        /*lowX = Math.floor(newX);
         lowY = Math.floor(newY);
         highX = Math.floor(newX) +1;
         highY= Math.floor(newY) +1;
         if ( maps.levels[maps.active.level].walls[lowX][lowY] == 0 || maps.levels[maps.active.level].walls[highX][highY] == 0){
-            pos.x=newX;
+          */  pos.x=newX;
             pos.y=newY;
 
-        }
+        //}
      return pos;
     },
     isBlocking: function(x,y){
