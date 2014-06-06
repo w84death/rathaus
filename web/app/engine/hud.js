@@ -6,7 +6,7 @@ var hud = {
     description : null,
 
     init : function () {
-        this.item = $("<div class='currentItem'></div>");
+        this.item = $("<div id='currentItem'></div>");
         this.description = $('#description');
 
         $('.viewport').append(this.item);
@@ -16,6 +16,7 @@ var hud = {
 
     clearCurrentItem : function () {
         this.item.empty();
+        this.item.hide();
     },
 
     setCurrentItem : function (item) {
@@ -28,6 +29,8 @@ var hud = {
 
         this.item.append(img);
         this.item.append(label);
+        this.item.show();
+        console.log(this.item);
     },
 
     reset : function () {
@@ -41,6 +44,7 @@ var hud = {
         var text=$('<span>If you want to open this door, you should find: <br /> '+maps.active.key.item.description+'</span>');
         this.description.append(text);
         this.description.show();
+
     },
 
     hideItemDescription: function(){

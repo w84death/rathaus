@@ -57,7 +57,6 @@ var player = {
                 return items.currentItems[i].item;
             }
         }
-        ;
 
         return false;
     },
