@@ -77,12 +77,27 @@ div#floor {background-image: -webkit-gradient(
 	color-stop(0, #5B5B5B),
 	color-stop(1, #0C0F14)
 );
+
 background-image: -o-linear-gradient(top, #5B5B5B 0%, #0C0F14 100%);
 background-image: -moz-linear-gradient(top, #5B5B5B 0%, #0C0F14 100%);
 background-image: -webkit-linear-gradient(top, #5B5B5B 0%, #0C0F14 100%);
 background-image: -ms-linear-gradient(top, #5B5B5B 0%, #0C0F14 100%);
 background-image: linear-gradient(to top, #5B5B5B 0%, #0C0F14 100%);}
-div#ceiling {height:50%; background-color:rgb(210,224,224);}
+div#ceiling {
+    height:50%;
+    background-image: -webkit-gradient(
+    linear,
+    left bottom,
+    left top,
+    color-stop(0, #5A6060),
+    color-stop(1, #d2e0e0)
+);
+
+background-image: -o-linear-gradient(top, #5A6060 0%, #d2e0e0 100%);
+background-image: -moz-linear-gradient(top, #5A6060 0%, #d2e0e0 100%);
+background-image: -webkit-linear-gradient(top, #5A6060 0%, #d2e0e0 100%);
+background-image: -ms-linear-gradient(top, #5A6060 0%, #d2e0e0 100%);
+background-image: linear-gradient(to top, #5A6060 0%, #d2e0e0 100%);}
 
 footer {text-align:center;}
 
