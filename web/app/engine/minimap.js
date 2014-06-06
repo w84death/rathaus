@@ -27,8 +27,7 @@ var miniMap = {
             for (var x=0; x < maps.active.width; x++) {
                 var wall = maps.levels[maps.active.level].walls[y][x];
                 if (wall > 0) {
-                    colorValue = 15;
-                    this.ctx.fillStyle = 'rgb(' + colorValue + ',' + colorValue + ',' + colorValue + ')';
+                    this.ctx.fillStyle = '#afa5a8';
 
                     this.ctx.fillRect(
                         x * this.scale,
@@ -88,7 +87,7 @@ var miniMap = {
         var item = null;
         for (var i = 0; i < maps.levels[maps.active.level].items.length; i++) {
             item = maps.levels[maps.active.level].door;
-            this.ctx.fillStyle = 'white';
+            this.ctx.fillStyle = '#ff00ff';
             this.ctx.fillRect(
                 item.x * this.scale,
                 item.y * this.scale,
