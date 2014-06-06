@@ -17,6 +17,12 @@ var enemies = {
             moveSpeed : 0.1,
             rotSpeed : 2,
             totalStates : 5
+        },
+        {
+            img : 'media/images/enemies/vampire.png',
+            moveSpeed : 0.2,
+            rotSpeed : 1,
+            totalStates : 5
         }
     ],
 
