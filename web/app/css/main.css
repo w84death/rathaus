@@ -39,9 +39,9 @@ body {background-color:#222; color:#f8f8f8;}
   top: 50%; left: 50%; margin-top: -300px; margin-left: -512px; overflow:hidden;}
 
 .viewport:after {
-	-webkit-box-shadow: inset 0px 0px 85px rgba(0,0,0,0.8);
-	-moz-box-shadow:    inset 0px 0px 85px rgba(0,0,0,0.8);
-	box-shadow:         inset 0px 0px 85px rgba(0,0,0,0.8);
+	-webkit-box-shadow: inset 0px 0px 150px rgba(0,0,0,0.8);
+	-moz-box-shadow:    inset 0px 0px 150px rgba(0,0,0,0.8);
+	box-shadow:         inset 0px 0px 150px rgba(0,0,0,0.8);
 
 	position: absolute;
 	top: 0; left: 0; bottom: 0; right: 0;
