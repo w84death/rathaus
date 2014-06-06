@@ -17,6 +17,7 @@ var game = {
     STATE: 'game',
 
     init: function(){
+        sounds.playAmbient();
         // init map
         maps.init();
         miniMap.init();
@@ -28,6 +29,7 @@ var game = {
 
         console.log(':: starting game cycle..');
         this.gameCycle();
+
     },
     lastUpdate: Date.now(),
     bindKeys: function() {
