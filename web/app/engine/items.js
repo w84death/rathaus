@@ -89,6 +89,11 @@ var items = {
         this.visibleSprites = [];
     },
 
+    dropItem: function() {
+        hud.clearCurrentItem();
+        player.item = null;
+    },
+
     renderSprites : function () {
         var viewDist = (render.screenWidth/2) / Math.tan((render.fov / 2));
 

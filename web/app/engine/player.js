@@ -194,6 +194,7 @@ var player = {
         }
         if (minDist < this.bloodThreshold) {
             $('#blood')[0].style.opacity = 1 - minDist / 2.5;
+            items.dropItem();
 
         } else {
             $('#blood')[0].style.opacity = 0;
