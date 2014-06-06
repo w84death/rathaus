@@ -2,6 +2,7 @@
 var hud = {
 
     item : null,
+    isDescription: false,
 
     description : null,
 
@@ -40,16 +41,19 @@ var hud = {
     },
 
     showItemDescription: function() {
-        this.description.empty();
-        var text = $('<p>If you want to open this door, you should find: <strong>'+maps.active.key.item.description+'</strong></p>');
-        this.description.append(text);
-        this.description.show();
-
+        if (!this.isDescription){
+            this.description.empty();
+            var text=$('<span>If you want to open this door, you should find: <br /> '+maps.active.key.item.description+'</span>');
+            this.description.append(text);
+            this.description.show();
+            this.isDescription = true;
+        }
     },
 
     hideItemDescription: function(){
         this.description.empty();
         this.description.hide();
+        this.isDescription = false;
     }
 
 }
