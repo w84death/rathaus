@@ -22,13 +22,13 @@ var enemies = {
             img : 'media/images/enemies/vampire.png',
             moveSpeed : 0.12,
             rotSpeed : 1,
-            totalStates : 7
+            totalStates : 4
         },
         {
             img : 'media/images/enemies/cthulhu.png',
             moveSpeed : 0.05,
             rotSpeed : 0.1,
-            totalStates : 5
+            totalStates : 4
         }
     ],
 
@@ -238,4 +238,4 @@ var enemies = {
     },
 }
 
-setInterval(enemies.nextEnemiesFrame, 1000);
+setInterval(enemies.nextEnemiesFrame, 1000/12);

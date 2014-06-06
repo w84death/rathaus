@@ -28,7 +28,7 @@ var render = {
 			strip.style.overflow = 'hidden';
 
 			var img = new Image();
-			img.src = 'media/images/walls.jpg';
+			img.src = 'media/images/walls.png';
 			img.style.position = 'absolute';
 			img.style.left = '0px';
 

@@ -26,7 +26,6 @@ var player = {
         var newY = this.y + Math.sin(this.rot) * moveStep;
 
         var pos = this.checkCollision(newX, newY, 0.35);
-        miniMap.update();
 
         if (newX != this.x || newY != this.y) {
             sounds.playFootstep();

@@ -15,14 +15,14 @@
 var game = {
 
     STATE: 'menu',
-    audio: true,
+    audio: false,
     lastMap: 1,
 
     init: function(){
         sounds.playAmbient();
         // init map
         maps.init();
-        miniMap.init();
+        
         hud.init();
         render.init();
         audio.init();
@@ -88,7 +88,6 @@ var game = {
     },
 
     goToMenu: function(){
-        document.getElementById('minimap').style.display = 'none';
         document.getElementById('menu').style.display = 'block';
         document.getElementById('rat').style.display = 'none';
         document.getElementById('currentItem').style.display = 'none';
@@ -102,7 +101,6 @@ var game = {
     },
 
     startGame: function(){
-        document.getElementById('minimap').style.display = 'block';
         document.getElementById('menu').style.display = 'none';
         document.getElementById('rat').style.display = 'block';
         if(hud.isDescription){
