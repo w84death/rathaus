@@ -43,7 +43,16 @@ body {background-color:#222; color:#f8f8f8;}
 }
 .minimap {position:absolute; bottom:0; left:0; opacity:0.8; background-color:rgba(0,0,0,0.5)}
 .currentItem {position:absolute; top:0; left:0; opacity:0.8;}
-.currentItem img { width: 100px; height: 100px; border: 2px solid yellow;}
+.currentItem img { width: 100px; height: 100px; border: 2px solid yellow; margin: 0}
+.currentItem span {
+    width: 100px;
+    height: 20px;
+    border: 2px solid white;
+    text-align: center;
+    display: block;
+    background: black;
+    margin: 0;
+}
 
 
 #screen {position:fixed; width:1024px; height:600px; overflow:hidden;}
@@ -83,7 +92,12 @@ footer {text-align:center;}
 #description{
     position:   absolute;
     z-index:    100000000000;
-    top:        600px;
+    top:        480px;
+    left:       340px;
+    background: black;
+    border: 2px solid white;
+    padding: 5px;
+    max-width: 500px;
 }
 #blood{
     position:   fixed;
