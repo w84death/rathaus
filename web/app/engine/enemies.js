@@ -91,6 +91,8 @@ var enemies = {
     },
 
     renderEnemies: function() {
+        var viewDist = (render.screenWidth/2) / Math.tan((render.fov / 2));
+
         for (var i=0;i<this.enemies.length;i++) {
             var enemy = this.enemies[i];
             var img = enemy.img;
@@ -105,14 +107,14 @@ var enemies = {
             if (angle >= Math.PI) angle -= 2*Math.PI;
 
             // is enemy in front of player? Maybe use the FOV value instead.
-            if (angle > -Math.PI*0.5 && angle < Math.PI*0.5) {
+            if (angle > -render.fov && angle < render.fov) {
                 var distSquared = dx*dx + dy*dy;
                 var dist = Math.sqrt(distSquared);
-                var size = render.viewDist / (Math.cos(angle) * dist);
+                var size = viewDist / (Math.cos(angle) * dist);
 
                 if (size <= 0) continue;
 
-                var x = Math.tan(angle) * render.viewDist;
+                var x = Math.tan(angle) * viewDist;
 
                 var style = img.style;
                 var canvasStyle = canvas.style;
@@ -145,7 +147,7 @@ var enemies = {
                 var styleLeft = (render.screenWidth/2 + x - size/2 - size*enemy.state);
                 if (styleLeft != oldStyles.left) {
                     style.left = styleLeft + "px";
-                    canvasStyle.left = (render.screenWidth/2 + x) + "px";
+                    canvasStyle.left = ((render.screenWidth/2) + x) + "px";
                     oldStyles.left = styleLeft;
                 }
 

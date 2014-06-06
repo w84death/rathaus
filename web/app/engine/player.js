@@ -14,6 +14,13 @@ var player = {
     move: function() {
         var moveStep = this.speed * this.moveSpeed;
         this.rot += this.dir * this.rotSpeed;
+        if (this.rot > 2*Math.PI) {
+            this.rot =  this.rot - 2*Math.PI;
+        }
+
+        if (this.rot < 0) {
+            this.rot = 2*Math.PI - this.rot;
+        }
 
         var newX = this.x + Math.cos(this.rot) * moveStep;
         var newY = this.y + Math.sin(this.rot) * moveStep;
