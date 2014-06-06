@@ -147,7 +147,7 @@ var enemies = {
                 var styleLeft = (render.screenWidth/2 + x - size/2 - size*enemy.state);
                 if (styleLeft != oldStyles.left) {
                     style.left = styleLeft + "px";
-                    canvasStyle.left = ((render.screenWidth/2) + x) + "px";
+                    canvasStyle.left = ((render.screenWidth - size)/2 + x) + "px";
                     oldStyles.left = styleLeft;
                 }
 
