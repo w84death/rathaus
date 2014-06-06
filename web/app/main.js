@@ -88,6 +88,7 @@ var game = {
     goToMenu: function(){
         document.getElementById('minimap').style.display = 'none';
         document.getElementById('menu').style.display = 'block';
+        document.getElementById('rat').style.display = 'none';
         this.STATE = 'menu';
         //maps.loadMap();
     },
@@ -100,6 +101,7 @@ var game = {
     startGame: function(){
         document.getElementById('minimap').style.display = 'block';
         document.getElementById('menu').style.display = 'none';
+        document.getElementById('rat').style.display = 'block';
         game.STATE = 'game';
         if(maps.active.level === 0){
             maps.nextMap();

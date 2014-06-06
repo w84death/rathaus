@@ -51,6 +51,9 @@ body {background-color:#222; color:#f8f8f8;}
 #minimap:after {display:block;content:''; position:absolute; top:-18px; left:-23px;
     width:237px; height:244px; background: transparent url('../../media/images/minimap.png');}
 
+#rat {position:absolute; display:none; bottom:0; right:150px; width:266px; height:320px;
+    background: transparent url('../../media/images/rat.png');}
+
 .currentItem {position:absolute; top:0; left:0; opacity:0.8;}
 .currentItem img { width: 100px; height: 100px; border: 2px solid yellow; margin: 0}
 .currentItem span {
