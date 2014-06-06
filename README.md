@@ -1,6 +1,8 @@
 Gardening Simulator 3-D
 =======================
 
+![alt tag](https://raw.github.com/w84death/rathaus/Gardening-Simulator/assets/gardein_simulator_poster.png)
+
 - ultra big pixels..
 - and very few of them overal!
 - flowers, grass, trees, everything..
