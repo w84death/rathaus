@@ -15,10 +15,11 @@ var maps = {
     },
 
     loadMap: function(){
-        this.active.width = this.levels[maps.active.level].walls[0].length;
-        this.active.height = this.levels[maps.active.level].walls.length;
-        player.x = maps.levels[maps.active.level].start[0].x;
-        player.y = maps.levels[maps.active.level].start[0].y;
+        var level = this.active.level;
+        this.active.width = this.levels[level].walls[0].length;
+        this.active.height = this.levels[level].walls.length;
+        player.x = maps.levels[level].start[0].x;
+        player.y = maps.levels[level].start[0].y;
         items.initItems();
         enemies.reloadMap();
         this.active.key = items.pickRandomItem(items.currentItems);

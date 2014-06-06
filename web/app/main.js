@@ -16,6 +16,7 @@ var game = {
 
     STATE: 'menu',
     audio: true,
+    lastMap: 1,
 
     init: function(){
         sounds.playAmbient();
@@ -62,22 +63,33 @@ var game = {
             if(game.STATE == 'game'){
                 switch (e.keyCode) {
                     case 78:
-                        game.nextMap();
+                        game.nextMap(); break;
                     case 38:
                     case 40:
                         player.speed = 0; break;
                     case 37:
                     case 39:
                         player.dir = 0; break;
+                    case 77:
+                        game.goToMenu(); break;
+                    case 27:
+                        game.goToMenu(); break;
                 }
             }
             if(game.STATE == 'menu'){
                 switch (e.keyCode) {
                     case 13:
-                        game.startGame();
+                        game.startGame(); break;
                 }
             }
         }
+    },
+
+    goToMenu: function(){
+        document.getElementById('minimap').style.display = 'none';
+        document.getElementById('menu').style.display = 'block';
+        this.STATE = 'menu';
+        //maps.loadMap();
     },
 
     nextMap: function(){
@@ -88,11 +100,10 @@ var game = {
     startGame: function(){
         document.getElementById('minimap').style.display = 'block';
         document.getElementById('menu').style.display = 'none';
-        console.log(document.getElementById('minimap'));
-        //$('#minimap').show();
-        //$('#menu').hide();
         game.STATE = 'game';
-        maps.nextMap();
+        if(maps.active.level === 0){
+            maps.nextMap();
+        }
         hud.reset();
     },
 
