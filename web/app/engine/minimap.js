@@ -91,8 +91,8 @@ var miniMap = {
             this.ctx.fillRect(
                 item.x * this.scale,
                 item.y * this.scale,
-                this.scale * 0.5,
-                this.scale * 0.5
+                this.scale,
+                this.scale
             );
         }
         this.ctx.stroke();
