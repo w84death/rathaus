@@ -20,8 +20,14 @@ var enemies = {
         },
         {
             img : 'media/images/enemies/vampire.png',
-            moveSpeed : 0.2,
+            moveSpeed : 0.12,
             rotSpeed : 1,
+            totalStates : 7
+        },
+        {
+            img : 'media/images/enemies/vampire.png',
+            moveSpeed : 0.03,
+            rotSpeed : 0.1,
             totalStates : 7
         }
     ],
