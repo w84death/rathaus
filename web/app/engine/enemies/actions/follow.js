@@ -4,7 +4,7 @@ var follow = function(entity) {
     // Distance from entity to to player
     var dist = Math.sqrt(dx*dx + dy*dy);
     // If distance is more than X, then entity must chase player
-    if (dist > 3 && dist < 6 ) {
+    if (dist > 2 && dist < 8 ) {
         var angle = Math.atan2(dy, dx);
         entity.rotDeg = angle * 180 / Math.PI;
         entity.rot = angle;

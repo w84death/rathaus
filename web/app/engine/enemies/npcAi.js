@@ -52,7 +52,7 @@ var npcAi = {
         var randomValue = 0;
         var range = [];
         for (i = 0; i < entity.behaviourPattern.length; i++) {
-            if (entity.behaviourPattern[i].value > 300) {
+            if (entity.behaviourPattern[i].value > 500) {
                 entity.behaviourPattern[i].value  = 1;
             }
             randomValue += entity.behaviourPattern[i].value;
