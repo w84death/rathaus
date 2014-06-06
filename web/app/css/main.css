@@ -64,9 +64,7 @@ body {background-color:#222; color:#f8f8f8;}
 #currentItem:after {display:block;content:''; position:absolute; top:-20px; left:-23px;
     width:147px; height:173px; background: transparent url('../../media/images/items.png');}
 
-.item {
-    border:8px solid #2b2b29;
-}
+.item { border:8px solid #2b2b29;}
 
 #screen {position:fixed; width:1024px; height:600px; overflow:hidden;}
 #screen div {z-index:10;}
@@ -118,13 +116,24 @@ footer {text-align:center;}
 #description{
     position:   absolute;
     z-index:    100000000000;
-    top:        480px;
-    left:       340px;
-    background: black;
-    border: 2px solid white;
+    top: 100px;
+    left: 340px;
+    background-color: #2b2b29;
+    color:#afa5a8;
     padding: 5px;
-    max-width: 500px;
+    width: 430px;
+    height: 100px;
+    font-size: 10px;
+    padding: 10px 20px 20px 20px;
+    box-sizing: border-box;
+    -moz-box-sizing:border-box;
+    text-align:center;
 }
+
+#description:after {display:block;content:''; position:absolute; top:-10px; left:-10px;
+    width:456px; height:111px; background: transparent url('../../media/images/messagebox.png') no-repeat;}
+#description strong {display:block; color:#e3d9db; font-size: 11px;}
+
 #blood{
     position:   fixed;
     width:      1024px;
