@@ -198,10 +198,12 @@ var enemies = {
     },
 
     ai: function() {
-        for (var i=0; i < this.enemies.length; i++) {
-            var entity = this.enemies[i];
-            npcAi.think(entity);
-            this.move(entity);
+        if(game.STATE == 'game'){
+            for (var i=0; i < this.enemies.length; i++) {
+                var entity = this.enemies[i];
+                npcAi.think(entity);
+                this.move(entity);
+            }
         }
     },
     isBlocking: function(x,y){

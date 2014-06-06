@@ -193,7 +193,7 @@ var player = {
         if (minDist <this.bloodThreshold*2) {
             sounds.playBlood();
         }
-        if (minDist < this.bloodThreshold*0.5) {
+        if (minDist < this.bloodThreshold*0.5 && this.item) {
             items.dropItem();
         }
         if (minDist < this.bloodThreshold) {

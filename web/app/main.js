@@ -14,7 +14,7 @@
 
 var game = {
 
-    STATE: 'game',
+    STATE: 'menu',
     audio: true,
 
     init: function(){
@@ -36,40 +36,66 @@ var game = {
     lastUpdate: Date.now(),
     bindKeys: function() {
         document.onkeydown = function(e) {
-            e = e || window.event;
-            // Which key was pressed?
-            switch (e.keyCode) {
-                // Up, move player forward, ie. increase speed
-                case 38:
-                    player.speed = 1; break;
-                // Down, move player backward, set negative speed
-                case 40:
-                    player.speed = -1; break;
-                // Left, rotate player left
-                case 37:
-                    player.dir = -1; break;
-                // Right, rotate player right
-                case 39:
-                    player.dir = 1; break;
+            if(game.STATE == 'game'){
+                e = e || window.event;
+                // Which key was pressed?
+                switch (e.keyCode) {
+                    // Up, move player forward, ie. increase speed
+                    case 38:
+                        player.speed = 1; break;
+                    // Down, move player backward, set negative speed
+                    case 40:
+                        player.speed = -1; break;
+                    // Left, rotate player left
+                    case 37:
+                        player.dir = -1; break;
+                    // Right, rotate player right
+                    case 39:
+                        player.dir = 1; break;
+                }
             }
         }
         // Stop the player movement/rotation
         // when the keys are released
         document.onkeyup = function(e) {
             e = e || window.event;
-            switch (e.keyCode) {
-                case 78:
-                    maps.nextMap();
-                    hud.reset();
-                case 38:
-                case 40:
-                    player.speed = 0; break;
-                case 37:
-                case 39:
-                    player.dir = 0; break;
+            if(game.STATE == 'game'){
+                switch (e.keyCode) {
+                    case 78:
+                        game.nextMap();
+                    case 38:
+                    case 40:
+                        player.speed = 0; break;
+                    case 37:
+                    case 39:
+                        player.dir = 0; break;
+                }
+            }
+            if(game.STATE == 'menu'){
+                switch (e.keyCode) {
+                    case 13:
+                        game.startGame();
+                }
             }
         }
     },
+
+    nextMap: function(){
+        maps.nextMap();
+        hud.reset();
+    },
+
+    startGame: function(){
+        document.getElementById('minimap').style.display = 'block';
+        document.getElementById('menu').style.display = 'none';
+        console.log(document.getElementById('minimap'));
+        //$('#minimap').show();
+        //$('#menu').hide();
+        game.STATE = 'game';
+        maps.nextMap();
+        hud.reset();
+    },
+
     gameCycle: function() {
         player.move();
         render.render();

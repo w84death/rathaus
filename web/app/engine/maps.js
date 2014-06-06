@@ -27,7 +27,7 @@ var maps = {
     nextMap: function(){
         this.active.level += 1;
         if(this.active.level > this.levels.length-1){
-            this.active.level = 0;
+            this.active.level = 1;
         }
         this.loadMap();
 
