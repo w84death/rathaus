@@ -9,7 +9,7 @@ var render = {
 	fovHalf: null,
 	viewDist: null,
 	twoPI: Math.PI * 2,
-	numTextures: 11,
+	numTextures: 22,
 	stripIdx: 0,
 
 	init: function(){
@@ -28,7 +28,7 @@ var render = {
 			strip.style.overflow = 'hidden';
 
 			var img = new Image();
-			img.src = 'media/images/walls.png';
+			img.src = 'media/images/walls.jpg';
 			img.style.position = 'absolute';
 			img.style.left = '0px';
 
@@ -153,7 +153,6 @@ var render = {
 					yHit = y;
 					xWallHit = wallX;
 					yWallHit = wallY;
-
 					wallType = maps.levels[maps.active.level].walls[wallY][wallX];
 					textureX = x % 1;
 					if (up) textureX = 1 - textureX;
