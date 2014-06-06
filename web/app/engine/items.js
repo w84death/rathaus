@@ -92,6 +92,7 @@ var items = {
     dropItem: function() {
         hud.clearCurrentItem();
         player.item = null;
+        audio.play({sound:'drop'});
     },
 
     renderSprites : function () {
