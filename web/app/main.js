@@ -37,8 +37,8 @@ var game = {
     lastUpdate: Date.now(),
     bindKeys: function() {
         document.onkeydown = function(e) {
+            e = e || window.event;
             if(game.STATE == 'game'){
-                e = e || window.event;
                 // Which key was pressed?
                 switch (e.keyCode) {
                     // Up, move player forward, ie. increase speed
@@ -75,10 +75,12 @@ var game = {
                     case 27:
                         game.goToMenu(); break;
                 }
-            }
+            }else
             if(game.STATE == 'menu'){
                 switch (e.keyCode) {
                     case 13:
+                        game.startGame(); break;
+                    case 27:
                         game.startGame(); break;
                 }
             }
