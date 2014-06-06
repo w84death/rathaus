@@ -64,6 +64,9 @@ body {background-color:#222; color:#f8f8f8;}
 #currentItem:after {display:block;content:''; position:absolute; top:-20px; left:-23px;
     width:147px; height:173px; background: transparent url('../../media/images/items.png');}
 
+.item {
+    border:8px solid #2b2b29;
+}
 
 #screen {position:fixed; width:1024px; height:600px; overflow:hidden;}
 #screen div {z-index:10;}
@@ -111,9 +114,7 @@ background-image: linear-gradient(to top, #5A6060 0%, #d2e0e0 100%);}
 
 footer {text-align:center;}
 
-.item {
-    border:     2px solid yellow;
-}
+
 #description{
     position:   absolute;
     z-index:    100000000000;
