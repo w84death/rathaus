@@ -10,7 +10,11 @@ hr { display: block; height: 1px; border: 0; border-top: 1px solid #222; margin:
 
 /* layout_ */
 
-body {width:100%; margin:0;}
+body {
+        width:100%;
+        margin:0;
+
+}
 
 ul,li {margin:0; padding:0; list-style:none;}
 a:link, a:visited, a:active {text-decoration:underline;}
@@ -18,7 +22,9 @@ a:link, a:visited, a:active {text-decoration:underline;}
 
 /* typography_ */
 
-html { font-size: 1em; line-height: 1.4; font-family: Helvetica, Arial, sans-serif;
+html {
+    font-size: 1em; line-height: 1.4;
+    font-family: 'Frijole', cursive;
     text-rendering: optimizeLegibility;}
 h1 {font-size:1.8em;}
 h2 {font-size:1.2em;}
