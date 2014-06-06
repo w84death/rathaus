@@ -85,6 +85,17 @@ var miniMap = {
             );
         }
 
+        var item = null;
+        for (var i = 0; i < maps.levels[maps.active.level].items.length; i++) {
+            item = maps.levels[maps.active.level].door;
+            this.ctx.fillStyle = 'white';
+            this.ctx.fillRect(
+                item.x * this.scale,
+                item.y * this.scale,
+                this.scale * 0.5,
+                this.scale * 0.5
+            );
+        }
         this.ctx.stroke();
 
     },

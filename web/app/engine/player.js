@@ -192,10 +192,11 @@ var player = {
         if (minDist <this.bloodThreshold*2) {
             sounds.playBlood();
         }
+        if (minDist < this.bloodThreshold*0.5) {
+            items.dropItem();
+        }
         if (minDist < this.bloodThreshold) {
             $('#blood')[0].style.opacity = 1 - minDist / 2.5;
-            items.dropItem();
-
         } else {
             $('#blood')[0].style.opacity = 0;
         }
