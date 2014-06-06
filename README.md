@@ -1,12 +1,14 @@
-rathaus
-=======
+Gardening Simulator 3-D
+=======================
 
-Game for Pearson Hackathon
+- ultra big pixels..
+- and very few of them overal!
+- flowers, grass, trees, everything..
+- bees, bats, buterflys!
+- lot of fun :)
 
-Based on the tutorial: http://dev.opera.com/articles/3d-games-with-canvas-and-raycasting-part-1/
-
-Team:
-- Krzysztof Jankowski
+Big thanks to the team that created this engine implementation:
 - Krzysztof Tomiak
 - Paweł Weremczuk
 - Wojciech Chojnacki
+- and me to :)

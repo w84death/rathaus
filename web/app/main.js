@@ -22,7 +22,7 @@ var game = {
         sounds.playAmbient();
         // init map
         maps.init();
-        
+
         hud.init();
         render.init();
         audio.init();
@@ -89,7 +89,6 @@ var game = {
 
     goToMenu: function(){
         document.getElementById('menu').style.display = 'block';
-        document.getElementById('rat').style.display = 'none';
         document.getElementById('currentItem').style.display = 'none';
         document.getElementById('description').style.display = 'none';
         this.STATE = 'menu';
@@ -102,7 +101,6 @@ var game = {
 
     startGame: function(){
         document.getElementById('menu').style.display = 'none';
-        document.getElementById('rat').style.display = 'block';
         if(hud.isDescription){
             document.getElementById('description').style.display = 'block';
         }

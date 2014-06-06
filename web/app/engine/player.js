@@ -9,7 +9,6 @@ var player = {
     item: null,
     pickupThreshold: 0.6,
     doorThreshold: 1.5,
-    bloodThreshold: 2.5,
 
     move: function () {
         var moveStep = this.speed * this.moveSpeed;
@@ -32,8 +31,7 @@ var player = {
 
         }
         this.x = pos.x;
-        this.y = pos.y;
-        this.bloodOnScreen(this.x, this.y);
+        this.y = pos.y;        
         this.nearDoor(this.x, this.y);
 
 
@@ -176,31 +174,6 @@ var player = {
                 hud.reset();
             }
         }
-    },
-    bloodOnScreen: function (x, y) {
-        var minDist = 100;
-        for (var i = 0; i < enemies.enemies.length; i++) {
-            var enemy = enemies.enemies[i];
-            var dx = enemy.x - x;
-            var dy = enemy.y - y;
-            var dist = Math.sqrt(dx * dx + dy * dy);
-            if (minDist > dist && game.STATE == 'game') {
-                minDist = dist;
-            }
-        }
-        if (minDist <this.bloodThreshold*2) {
-            sounds.playBlood();
-        }
-        if (minDist < this.bloodThreshold*0.5 && this.item) {
-            items.dropItem();
-        }
-        if (minDist < this.bloodThreshold) {
-            $('#blood')[0].style.opacity = 1 - minDist / 2.5;
-        } else {
-            $('#blood')[0].style.opacity = 0;
-        }
-    }
-
-
+    },    
 
 }

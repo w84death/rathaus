@@ -13,19 +13,19 @@ var enemies = {
             totalStates : 5
         },
         {
-            img : 'media/images/enemies/metal_skeleton.png',
-            moveSpeed : 0.1,
-            rotSpeed : 2,
-            totalStates : 5
+            img : 'media/images/enemies/dziad.png',
+            moveSpeed : 0.05,
+            rotSpeed : 1,
+            totalStates : 3
         },
         {
-            img : 'media/images/enemies/vampire.png',
+            img : 'media/images/enemies/bee.png',
             moveSpeed : 0.12,
             rotSpeed : 1,
             totalStates : 4
         },
         {
-            img : 'media/images/enemies/cthulhu.png',
+            img : 'media/images/enemies/bat.png',
             moveSpeed : 0.05,
             rotSpeed : 0.1,
             totalStates : 4
