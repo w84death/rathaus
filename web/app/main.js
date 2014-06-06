@@ -89,8 +89,8 @@ var game = {
         document.getElementById('minimap').style.display = 'none';
         document.getElementById('menu').style.display = 'block';
         document.getElementById('rat').style.display = 'none';
+        document.getElementById('currentItem').style.display = 'none';
         this.STATE = 'menu';
-        //maps.loadMap();
     },
 
     nextMap: function(){
@@ -102,6 +102,9 @@ var game = {
         document.getElementById('minimap').style.display = 'block';
         document.getElementById('menu').style.display = 'none';
         document.getElementById('rat').style.display = 'block';
+        if(player.item){
+            document.getElementById('currentItem').style.display = 'block';
+        }
         game.STATE = 'game';
         if(maps.active.level === 0){
             maps.nextMap();

@@ -51,17 +51,19 @@ body {background-color:#222; color:#f8f8f8;}
 #minimap:after {display:block;content:''; position:absolute; top:-18px; left:-23px;
     width:237px; height:244px; background: transparent url('../../media/images/minimap.png');}
 
-.currentItem {position:absolute; top:0; left:0; opacity:0.8;}
-.currentItem img { width: 100px; height: 100px; border: 2px solid yellow; margin: 0}
-.currentItem span {
+#currentItem {display:none; position:absolute; top:50px; left:50px; width:100px; height:150px;
+    background-color:#2b2b29;}
+#currentItem img { width: 100px; height: 100px; margin: 0}
+#currentItem span {
     width: 100px;
     height: 20px;
-    border: 2px solid white;
     text-align: center;
     display: block;
-    background: black;
     margin: 0;
 }
+#currentItem:after {display:block;content:''; position:absolute; top:-20px; left:-23px;
+    width:147px; height:173px; background: transparent url('../../media/images/items.png');}
+
 
 #screen {position:fixed; width:1024px; height:600px; overflow:hidden;}
 #screen div {z-index:10;}
