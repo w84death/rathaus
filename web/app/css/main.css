@@ -41,7 +41,10 @@ body {background-color:#222; color:#f8f8f8;}
 	top: 0; left: 0; bottom: 0; right: 0;
 	content: "";
 }
-#minimap {display:none; position:absolute; bottom:0; left:0; opacity:0.8; background-color:rgba(0,0,0,0.5)}
+#minimap {display:none; position:absolute; bottom:50px; left:50px; background-color:#2b2b29; }
+#minimap:after {display:block;content:''; position:absolute; top:-18px; left:-23px;
+    width:237px; height:244px; background: transparent url('../../media/images/minimap.png');}
+
 .currentItem {position:absolute; top:0; left:0; opacity:0.8;}
 .currentItem img { width: 100px; height: 100px; border: 2px solid yellow; margin: 0}
 .currentItem span {
