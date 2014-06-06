@@ -25,10 +25,10 @@ var enemies = {
             totalStates : 7
         },
         {
-            img : 'media/images/enemies/vampire.png',
+            img : 'media/images/enemies/cthulhu.png',
             moveSpeed : 0.03,
             rotSpeed : 0.1,
-            totalStates : 7
+            totalStates : 5
         }
     ],
 
