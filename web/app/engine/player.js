@@ -28,6 +28,10 @@ var player = {
         var pos = this.checkCollision(newX, newY, 0.35);
         miniMap.update();
 
+        if (newX != this.x || newY != this.y) {
+            this.playFootstep();
+
+        }
         this.x = pos.x;
         this.y = pos.y;
         this.bloodOnScreen(this.x,this.y);
@@ -188,6 +192,19 @@ var player = {
         } else {
             $('#blood')[0].style.opacity = 0;
         }
-     }
+     },
+    playingFootstep : 0,
+    playFootstep: function() {
+        if (this.playingFootstep == 0) {
+            this.playingFootstep = 1;
+            var items = Array("footstep_1.wav", "footstep_2.wav", "footstep_3.wav", "footstep_4.wav");
+            var item = items[Math.floor(Math.random()*items.length)];
+
+            var snd = new Audio("media/sounds/"+item); // buffers automatically when created
+            snd.play();
+            window.setTimeout(function() {player.playingFootstep = 0}, 450);
+        }
+    }
+
 
 }
