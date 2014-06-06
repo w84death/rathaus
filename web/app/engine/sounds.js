@@ -3,9 +3,9 @@ var sounds = {
     playingBlood: 0,
     heartBeat: 0,
 
-    bassItems: ["1.wav","2.wav","3.wav","4.wav","5.wav","6.wav","7.wav","8.wav"],
-    padItems: ["1.wav","2.wav","3.wav","4.wav"],
-    keyItems: ["1.wav","2.wav","3.wav","4.wav"],
+    bassItems: ["1.wav","2.wav","3.wav","4.wav","5.wav","6.wav"],
+    padItems: ["1.wav","2.wav","3.wav"],
+    keyItems: ["1.wav","2.wav","3.wav"],
 
     playFootstep: function() {
         if (this.playingFootstep == 0) {
