@@ -3,60 +3,49 @@ var sounds = {
     playingBlood: 0,
     heartBeat: 0,
 
-    bassItems: ["1.wav","2.wav","3.wav","4.wav","5.wav","6.wav"],
-    padItems: ["1.wav","2.wav","3.wav"],
-    keyItems: ["1.wav","2.wav","3.wav"],
+    bassItems: ["bass1","bass2","bass3","bass4","bass5","bass6"],
+    padItems: ["pad1","pad2","pad3"],
+    keyItems: ["key1","key2","key3"],
 
     playFootstep: function() {
         if (this.playingFootstep == 0) {
             this.playingFootstep = 1;
-            var items = Array("footstep_1.wav", "footstep_2.wav", "footstep_3.wav", "footstep_4.wav");
+            var items = Array("footstep1", "footstep2", "footstep3", "footstep4");
             var item = items[Math.floor(Math.random()*items.length)];
-
-            var snd = new Audio("media/sounds/"+item); // buffers automatically when created
-            snd.play();
+            audio.play({sound:item});
             window.setTimeout(function() {sounds.playingFootstep = 0}, 450);
         }
     },
+
     playDoor: function() {
-        var snd = new Audio("media/sounds/door.wav"); // buffers automatically when created
-        snd.play();
+        audio.play({sound:'door'});
     },
 
     playBlood: function() {
         if (this.playingBlood== 0) {
             if (this.heartBeat == 0) {
-                var snd2 = new Audio("media/sounds/heartbeat-speeding-up-02.wav"); // buffers automatically when created
-                snd2.play();
-
+                audio.play({sound:'heartbeat'});
                 window.setTimeout(function() {sounds.heartBeat = 0;}, 30000);
-
             }
 
             this.playingBlood = 1;
-            var items = Array("purr.wav", "horror004.wav", "horror005.wav");
+            var items = Array("purr", "horror1", "horror2");
             var item = items[Math.floor(Math.random()*items.length)];
 
-            var snd = new Audio("media/sounds/"+item); // buffers automatically when created
-            snd.play();
+            audio.play({sound:item});
 
             window.setTimeout(function() {sounds.playingBlood = 0;}, 3000);
         }
     },
     playAmbient: function() {
-        var bassItem = this.bassItems[Math.floor(Math.random()*this.bassItems.length)];
-        var bass = new Audio("media/sounds/ambient/bass/"+bassItem); // buffers automatically when created
-
-        var keyItem = this.bassItems[Math.floor(Math.random()*this.keyItems.length)];
-        var key = new Audio("media/sounds/ambient/key/"+keyItem); // buffers automatically when created
-
+        var bassItem = this.bassItems[Math.floor(Math.random()*this.bassItems.length)];      
+        var keyItem = this.bassItems[Math.floor(Math.random()*this.keyItems.length)];    
         var padItem = this.bassItems[Math.floor(Math.random()*this.padItems.length)];
-        var pad = new Audio("media/sounds/ambient/pad/"+padItem); // buffers automatically when created
+       
+        audio.play({sound:bassItem});
+        audio.play({sound:keyItem});
+        audio.play({sound:padItem});
 
-
-        bass.play(); pad.play(); key.play();
         window.setTimeout(function() {sounds.playAmbient()}, 6000);
-
-
     }
 }

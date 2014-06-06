@@ -15,6 +15,7 @@
 var game = {
 
     STATE: 'game',
+    audio: true,
 
     init: function(){
         sounds.playAmbient();
@@ -23,6 +24,7 @@ var game = {
         miniMap.init();
         hud.init();
         render.init();
+        audio.init();
 
         this.bindKeys();
         console.log(':: game initialized');

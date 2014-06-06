@@ -70,6 +70,7 @@ var player = {
         this.item = newItem;
 
         hud.setCurrentItem(newItem);
+        audio.play({sound:'pickup'});
     },
 
     checkCollision: function (newX, newY, radius) {

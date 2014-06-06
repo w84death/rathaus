@@ -123,7 +123,8 @@ footer {text-align:center;}
     margin-top: -300px;
     margin-left:-512px;
     opacity:    0;
-    background-image: url('../../media/images/blood.png');
+    background-image: url('../../media/images/blood2.png');
+    background-size: cover;
     z-index:    100000000000;
 }
 
