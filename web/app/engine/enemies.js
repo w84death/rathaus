@@ -26,7 +26,7 @@ var enemies = {
         },
         {
             img : 'media/images/enemies/cthulhu.png',
-            moveSpeed : 0.03,
+            moveSpeed : 0.05,
             rotSpeed : 0.1,
             totalStates : 5
         }
