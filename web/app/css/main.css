@@ -176,67 +176,18 @@ footer {text-align:center;}
     }
 }
 
-/* clouds */
-html,body {
-    margin:0;
-    height:100%
-}
+
 
 
 .clouds_one {
-    background:url('../../media/images/clouds/cloud_one.png');
+    background:url('../../media/images/clouds.png');
     position:absolute;
     left:0;
     top:0;
     height:100%;
     width:300%;
-    -webkit-animation:cloud_one 150s linear infinite;
-    -moz-animation:cloud_one 150s linear infinite;
-    -o-animation:cloud_one 150s linear infinite;
-    -webkit-transform:translate3d(0,0,0);
-    -moz-transform:translate3d(0,0,0);
-    -o-transform:translate3d(0,0,0)
 }
 
-
-@-webkit-keyframes sky_background {
-    0% {
-        background:#007fd5;
-        color:#007fd5
-    }
-
-    50% {
-        background:#000;
-        color:#a3d9ff
-    }
-
-    100% {
-        background:#007fd5;
-        color:#007fd5
-    }
-}
-
-
-@-webkit-keyframes cloud_one {
-    0% {
-        left:0
-    }
-
-    100% {
-        left:-200%
-    }
-}
-
-
-@-moz-keyframes cloud_one {
-    0% {
-        left:0
-    }
-
-    100% {
-        left:-200%
-    }
-}
 
 #rat {position:absolute; display:none; bottom:-20px; right:150px; width:266px; height:320px;
     background: transparent url('../../media/images/rat.png');
