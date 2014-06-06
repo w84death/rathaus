@@ -186,7 +186,7 @@ var player = {
             var dx = enemy.x - x;
             var dy = enemy.y - y;
             var dist = Math.sqrt(dx * dx + dy * dy);
-            if (minDist > dist) {
+            if (minDist > dist && game.STATE == 'game') {
                 minDist = dist;
             }
         }
