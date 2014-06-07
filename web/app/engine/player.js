@@ -155,7 +155,7 @@ var player = {
         return pos;
     },
     nearDoor: function (x, y) {
-        var dx = maps.levels[maps.active.level].door.x - x;
+        /*var dx = maps.levels[maps.active.level].door.x - x;
         var dy = maps.levels[maps.active.level].door.y - y;
         var dist = Math.sqrt(dx * dx + dy * dy);
 
@@ -164,7 +164,7 @@ var player = {
             this.jumpToNextMap();
         } else {
             hud.hideItemDescription();
-        }
+        })*/
     },
     jumpToNextMap: function () {
         if (this.item != null) {

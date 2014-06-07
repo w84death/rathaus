@@ -1,10 +1,10 @@
 var enemies = {
     enemyTypes: [
         {
-            img : 'media/images/enemies/mummy_color.png',
-            moveSpeed : 0.09,
+            img : 'media/images/enemies/rabbit.png',
+            moveSpeed : 0.2,
             rotSpeed : 1,
-            totalStates : 5
+            totalStates : 4
         },
         {
             img : 'media/images/enemies/mummy.png',
